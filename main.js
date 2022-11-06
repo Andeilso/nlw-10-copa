@@ -1,4 +1,4 @@
-//Objeto contendo os Jogos, as Datas, os horários, os grupos e os nomes dos times.
+// Objeto contendo os Jogos, as Datas, os horários, os grupos e os nomes dos times.
 const Jogos = {
     data_20_11: {
         data: "20/11",
