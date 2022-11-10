@@ -45,6 +45,9 @@ div.card{
     text-align: center;
     
     background-color: #1D1C19;
+
+    animation: 1s appear forwards;
+    opacity: 0;
 }
 
 div.card h2 {
@@ -123,4 +126,27 @@ div.bandeira p{
 
     visibility: hidden;
     transition: 0.5s;
+}
+
+@media (min-width: 1020px) {
+    #cards{
+        max-width: 1012px;
+    }
+}
+
+@keyframes appear {
+    0%{
+        opacity: 0;
+        transform: scale(0.1);
+    }
+
+    50%{
+        transform: scale(1.05);
+    }
+
+    
+    100%{
+        opacity: 1;
+        transform: scale(1);
+    }
 }

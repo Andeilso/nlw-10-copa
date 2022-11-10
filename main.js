@@ -660,7 +660,7 @@ const Jogos = {
 let mainHTML = document.querySelector('#cards'); // Selecionando a div MAIN
 let bandeiras = document.getElementsByClassName("bandeira");
 let i = 0; // Variável criada para entrar em cada Card dentro da div MAIN
-
+let delay = 0;
 
 // Funções
 const ouvindoBandeiras = (e) => {
@@ -698,12 +698,14 @@ const esconderNomeBandeiras = (e) => {
 
 // Criação de Cards
 for (const dataJogos in Jogos) {
+    console.log(mainHTML.children[0])
+    console.log(delay)
 
     // Adicionando uma Card para cada data dentro do objeto Jogos
     mainHTML.innerHTML += `
-        <div class="card">
+        <div class="card" style="animation-delay: ${delay}s">
             <h2> ${Jogos[dataJogos].data} <span>${Jogos[dataJogos].diaDaSemana}</span></h2>
-        </div>
+            </div>
     `
 
     // Adicionando uma tag "<ul>" para cada Card
@@ -711,27 +713,28 @@ for (const dataJogos in Jogos) {
     
     // Adicionando "li" (item de lista) dentro do "ul" para cada jogo do dia
     for (const jogo in Jogos[dataJogos].jogos) {
-
+        
         // Variavel criada para simplificar o chamado
         let jogoAtual = Jogos[dataJogos].jogos[jogo];
-
+        
         mainHTML.children[i].children[1].innerHTML += `
-                <li>
-                    <div class="bandeira">
-                        <img src="./assets/bandeiras/icon-${jogoAtual.jogador_1.icon}.svg" alt="Bandeira do ${jogoAtual.jogador_1}">
-                        <p>${jogoAtual.jogador_1.nome}</p>
-                    </div>
-                    <strong>${jogoAtual.hora}</strong>
-                    <div class="bandeira">
-                        <img src="./assets/bandeiras/icon-${jogoAtual.jogador_2.icon}.svg" alt="Bandeira do ${jogoAtual.jogador_2}">
-                        <p>${jogoAtual.jogador_2.nome}</p>
-                    </div>
-                </li>
+        <li>
+        <div class="bandeira">
+        <img src="./assets/bandeiras/icon-${jogoAtual.jogador_1.icon}.svg" alt="Bandeira do ${jogoAtual.jogador_1}">
+        <p>${jogoAtual.jogador_1.nome}</p>
+        </div>
+        <strong>${jogoAtual.hora}</strong>
+        <div class="bandeira">
+        <img src="./assets/bandeiras/icon-${jogoAtual.jogador_2.icon}.svg" alt="Bandeira do ${jogoAtual.jogador_2}">
+        <p>${jogoAtual.jogador_2.nome}</p>
+        </div>
+        </li>
         `
     }
-
+    
     // Próximo Card
     i++
+    delay += 0.3;
 }
 
 // Efeito das bandeiras ao passar o mouse
