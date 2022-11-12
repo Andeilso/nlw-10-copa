@@ -658,7 +658,9 @@ const Jogos = {
 
 // Variaveis
 let mainHTML = document.querySelector('#cards'); // Selecionando a div MAIN
-let bandeiras = document.getElementsByClassName("bandeira");
+let bandeiras = document.getElementsByClassName("bandeira"); // Selecionando todos cards
+let body = document.getElementsByTagName('body');
+let height = 0;
 let i = 0; // Variável criada para entrar em cada Card dentro da div MAIN
 let delay = 0;
 
@@ -683,7 +685,7 @@ const esconderNomeBandeiras = (e) => {
     let strong = e.target.parentElement.parentElement.children[1];
     let img = e.target.parentElement.children[0];
     let p = e.target.parentElement.children[1];
-
+    
     strong.style.visibility = "visible";
     
     img.style.transform = "scale(1)";
@@ -698,8 +700,6 @@ const esconderNomeBandeiras = (e) => {
 
 // Criação de Cards
 for (const dataJogos in Jogos) {
-    console.log(mainHTML.children[0])
-    console.log(delay)
 
     // Adicionando uma Card para cada data dentro do objeto Jogos
     mainHTML.innerHTML += `
@@ -742,9 +742,6 @@ for (let i = 0; i < bandeiras.length; i++) {
     bandeiras[i].addEventListener("mouseover", ouvindoBandeiras);
     bandeiras[i].addEventListener("mouseout", esconderNomeBandeiras);
 }
-
-
-
 
 
 
