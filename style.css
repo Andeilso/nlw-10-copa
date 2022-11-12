@@ -25,7 +25,7 @@ div#app{
 
 header{
     width: fit-content;
-    margin: 63px auto;
+    margin: 6px auto;
 }
 
 main#cards {
@@ -129,6 +129,15 @@ div.bandeira p{
     transition: 0.5s;
 }
 
+
+/* Estilo Div Tabela */
+div.card{
+    
+}
+
+
+
+/* Media querrys */
 @media (min-width: 680px) {
     body{
         height: auto;

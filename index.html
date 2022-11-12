@@ -17,9 +17,64 @@
             <header> <!-- Cabeçalho. -->
                 <img src="./assets/logo.svg" alt="Logo da NLW">
                 <h2></h2>
+
+                <select name="categoria" id="categoria">
+                    <option selected value="faseDeGrupos">Fase de Grupos</option>
+                    <option value="tabela">Tabela</option>
+                    <option value="quartasDeFinal">Quartas de Final</option>
+                    <option value="semifinal">Semifinal</option>
+                    <option value="terceiroColocado">Terceiro colocado</option>
+                    <option value="Final">Final</option>
+                </select>
             </header>
 
-            <main id="cards"></main>
+            <main id="cards">
+                <div class="card" id="tabela">
+                    <table>
+                        <tr> 
+                            <th>
+                                Grupo A
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                Equipe
+                            </th>
+                            <th>
+                                Pts
+                            </th>
+                            <th>
+                                PJ
+                            </th>
+                            <th>
+                                V
+                            </th>
+                            <th>
+                                E
+                            </th>
+                            <th>
+                                D
+                            </th>
+                            <th>
+                                SG
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <td>1</td>
+                                <td>Bandeira</td>
+                                <td>Qatar</td>
+                            </td>
+                            <td>3</td>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>-6</td>
+                        </tr>
+                    </table>
+                </div>
+            </main>
         </div> <!-- Siginifica uma seção. -->
         
         <script src="./main.js"></script>
