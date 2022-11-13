@@ -6,11 +6,11 @@ const Jogos = {
         jogos: {
             jogo_1: {
                 jogador_1: {
-                    icon: "catar",
+                    bnd: "catar",
                     nome: "Catar"
                 },
                 jogador_2:{
-                    icon: "equador",
+                    bnd: "equador",
                     nome: "Equador"
                 },
                 hora: "13:00",
@@ -24,11 +24,11 @@ const Jogos = {
         jogos: {
             jogo_1: {
                 jogador_1: {
-                    icon: "inglaterra",
+                    bnd: "inglaterra",
                     nome: "Inglaterra"
                 },
                 jogador_2:{
-                    icon: "ira",
+                    bnd: "ira",
                     nome: "Irã"
                 },
                 hora: "10:00",
@@ -36,11 +36,11 @@ const Jogos = {
             },
             jogo_2: {
                 jogador_1: {
-                    icon: "senegal",
+                    bnd: "senegal",
                     nome: "Senegal"
                 },
                 jogador_2:{
-                    icon: "holanda",
+                    bnd: "holanda",
                     nome: "Holanda"
                 },
                 hora: "13:00",
@@ -48,11 +48,11 @@ const Jogos = {
             },
             jogo_3: {
                 jogador_1: {
-                    icon: "estados-unidos",
+                    bnd: "estados-unidos",
                     nome: "EUA"
                 },
                 jogador_2:{
-                    icon: "pais-de-gales",
+                    bnd: "pais-de-gales",
                     nome: "Gales"
                 },
                 hora: "16:00",
@@ -66,11 +66,11 @@ const Jogos = {
         jogos: {
             jogo_1: {
                 jogador_1: {
-                    icon: "argentina",
+                    bnd: "argentina",
                     nome: "Argentina"
                 },
                 jogador_2:{
-                    icon: "arabia-saudita",
+                    bnd: "arabia-saudita",
                     nome: "Arábia S."
                 },
                 hora: "07:00",
@@ -78,11 +78,11 @@ const Jogos = {
             },
             jogo_2: {
                 jogador_1: {
-                    icon: "dinamarca",
+                    bnd: "dinamarca",
                     nome: "Dinamarca"
                 },
                 jogador_2:{
-                    icon: "tunisia",
+                    bnd: "tunisia",
                     nome: "Tunísia"
                 },
                 hora: "10:00",
@@ -90,11 +90,11 @@ const Jogos = {
             },
             jogo_3: {
                 jogador_1: {
-                    icon: "mexico",
+                    bnd: "mexico",
                     nome: "México"
                 },
                 jogador_2:{
-                    icon: "polonia",
+                    bnd: "polonia",
                     nome: "Polônia"
                 },
                 hora: "13:00",
@@ -102,11 +102,11 @@ const Jogos = {
             },
             jogo_4: {
                 jogador_1: {
-                    icon: "franca",
+                    bnd: "franca",
                     nome: "França"
                 },
                 jogador_2:{
-                    icon: "australia",
+                    bnd: "australia",
                     nome: "Austrália"
                 },
                 hora: "16:00",
@@ -120,11 +120,11 @@ const Jogos = {
         jogos: {
             jogo_1: {
                 jogador_1: {
-                    icon: "marrocos",
+                    bnd: "marrocos",
                     nome: "Marrocos"
                 },
                 jogador_2:{
-                    icon: "croacia",
+                    bnd: "croacia",
                     nome: "Croácia"
                 },
                 hora: "07:00",
@@ -132,11 +132,11 @@ const Jogos = {
             },
             jogo_2: {
                 jogador_1: {
-                    icon: "alemanha",
+                    bnd: "alemanha",
                     nome: "Alemanha"
                 },
                 jogador_2:{
-                    icon: "japao",
+                    bnd: "japao",
                     nome: "Japão"
                 },
                 hora: "10:00",
@@ -144,11 +144,11 @@ const Jogos = {
             },
             jogo_3: {
                 jogador_1: {
-                    icon: "espanha",
+                    bnd: "espanha",
                     nome: "Espanha"
                 },
                 jogador_2:{
-                    icon: "costa-rica",
+                    bnd: "costa-rica",
                     nome: "Costa Rica"
                 },
                 hora: "13:00",
@@ -156,11 +156,11 @@ const Jogos = {
             },
             jogo_4: {
                 jogador_1: {
-                    icon: "belgica",
+                    bnd: "belgica",
                     nome: "Bélgica"
                 },
                 jogador_2:{
-                    icon: "canada",
+                    bnd: "canada",
                     nome: "Canadá"
                 },
                 hora: "16:00",
@@ -174,11 +174,11 @@ const Jogos = {
         jogos: {
             jogo_1: {
                 jogador_1: {
-                    icon: "suica",
+                    bnd: "suica",
                     nome: "Suiça"
                 },
                 jogador_2:{
-                    icon: "camaroes",
+                    bnd: "camaroes",
                     nome: "Camarões"
                 },
                 hora: "07:00",
@@ -186,11 +186,11 @@ const Jogos = {
             },
             jogo_2: {
                 jogador_1: {
-                    icon: "uruguai",
+                    bnd: "uruguai",
                     nome: "Uruguai"
                 },
                 jogador_2:{
-                    icon: "coreia-do-sul",
+                    bnd: "coreia-do-sul",
                     nome: "Coréia do Sul"
                 },
                 hora: "10:00",
@@ -198,11 +198,11 @@ const Jogos = {
             },
             jogo_3: {
                 jogador_1: {
-                    icon: "portugal",
+                    bnd: "portugal",
                     nome: "Portugal"
                 },
                 jogador_2:{
-                    icon: "gana",
+                    bnd: "gana",
                     nome: "Gana"
                 },
                 hora: "13:00",
@@ -210,11 +210,11 @@ const Jogos = {
             },
             jogo_4: {
                 jogador_1: {
-                    icon: "brasil",
+                    bnd: "brasil",
                     nome: "Brasil"
                 },
                 jogador_2:{
-                    icon: "servia",
+                    bnd: "servia",
                     nome: "Sérvia"
                 },
                 hora: "16:00",
@@ -228,11 +228,11 @@ const Jogos = {
         jogos: {
             jogo_1: {
                 jogador_1: {
-                    icon: "pais-de-gales",
+                    bnd: "pais-de-gales",
                     nome: "Gales"
                 },
                 jogador_2:{
-                    icon: "ira",
+                    bnd: "ira",
                     nome: "Irã"
                 },
                 hora: "07:00",
@@ -240,11 +240,11 @@ const Jogos = {
             },
             jogo_2: {
                 jogador_1: {
-                    icon: "catar",
+                    bnd: "catar",
                     nome: "Catar"
                 },
                 jogador_2:{
-                    icon: "senegal",
+                    bnd: "senegal",
                     nome: "Senegal"
                 },
                 hora: "10:00",
@@ -252,11 +252,11 @@ const Jogos = {
             },
             jogo_3: {
                 jogador_1: {
-                    icon: "holanda",
+                    bnd: "holanda",
                     nome: "Holanda"
                 },
                 jogador_2:{
-                    icon: "equador",
+                    bnd: "equador",
                     nome: "Equador"
                 },
                 hora: "13:00",
@@ -264,11 +264,11 @@ const Jogos = {
             },
             jogo_4: {
                 jogador_1: {
-                    icon: "inglaterra",
+                    bnd: "inglaterra",
                     nome: "Inglaterra"
                 },
                 jogador_2:{
-                    icon: "estados-unidos",
+                    bnd: "estados-unidos",
                     nome: "EUA"
                 },
                 hora: "16:00",
@@ -282,11 +282,11 @@ const Jogos = {
         jogos: {
             jogo_1: {
                 jogador_1: {
-                    icon: "tunisia",
+                    bnd: "tunisia",
                     nome: "Tunísia"
                 },
                 jogador_2:{
-                    icon: "australia",
+                    bnd: "australia",
                     nome: "Austrália"
                 },
                 hora: "07:00",
@@ -294,11 +294,11 @@ const Jogos = {
             },
             jogo_2: {
                 jogador_1: {
-                    icon: "polonia",
+                    bnd: "polonia",
                     nome: "Polônia"
                 },
                 jogador_2:{
-                    icon: "arabia-saudita",
+                    bnd: "arabia-saudita",
                     nome: "Arábia S."
                 },
                 hora: "10:00",
@@ -306,11 +306,11 @@ const Jogos = {
             },
             jogo_3: {
                 jogador_1: {
-                    icon: "franca",
+                    bnd: "franca",
                     nome: "França"
                 },
                 jogador_2:{
-                    icon: "dinamarca",
+                    bnd: "dinamarca",
                     nome: "Dinamarca"
                 },
                 hora: "13:00",
@@ -318,11 +318,11 @@ const Jogos = {
             },
             jogo_4: {
                 jogador_1: {
-                    icon: "argentina",
+                    bnd: "argentina",
                     nome: "Argentina"
                 },
                 jogador_2:{
-                    icon: "mexico",
+                    bnd: "mexico",
                     nome: "México"
                 },
                 hora: "16:00",
@@ -336,11 +336,11 @@ const Jogos = {
         jogos: {
             jogo_1: {
                 jogador_1: {
-                    icon: "japao",
+                    bnd: "japao",
                     nome: "Japão"
                 },
                 jogador_2:{
-                    icon: "costa-rica",
+                    bnd: "costa-rica",
                     nome: "Costa Rica"
                 },
                 hora: "07:00",
@@ -348,11 +348,11 @@ const Jogos = {
             },
             jogo_2: {
                 jogador_1: {
-                    icon: "belgica",
+                    bnd: "belgica",
                     nome: "Bélgica"
                 },
                 jogador_2:{
-                    icon: "marrocos",
+                    bnd: "marrocos",
                     nome: "Marrocos"
                 },
                 hora: "10:00",
@@ -360,11 +360,11 @@ const Jogos = {
             },
             jogo_3: {
                 jogador_1: {
-                    icon: "croacia",
+                    bnd: "croacia",
                     nome: "Croácia"
                 },
                 jogador_2:{
-                    icon: "canada",
+                    bnd: "canada",
                     nome: "Canadá"
                 },
                 hora: "13:00",
@@ -372,11 +372,11 @@ const Jogos = {
             },
             jogo_4: {
                 jogador_1: {
-                    icon: "espanha",
+                    bnd: "espanha",
                     nome: "Espanha"
                 },
                 jogador_2:{
-                    icon: "alemanha",
+                    bnd: "alemanha",
                     nome: "Alemanha"
                 },
                 hora: "16:00",
@@ -390,11 +390,11 @@ const Jogos = {
         jogos: {
             jogo_1: {
                 jogador_1: {
-                    icon: "camaroes",
+                    bnd: "camaroes",
                     nome: "Camarões"
                 },
                 jogador_2:{
-                    icon: "servia",
+                    bnd: "servia",
                     nome: "Sérvia"
                 },
                 hora: "07:00",
@@ -402,11 +402,11 @@ const Jogos = {
             },
             jogo_2: {
                 jogador_1: {
-                    icon: "coreia-do-sul",
+                    bnd: "coreia-do-sul",
                     nome: "Coréia do Sul"
                 },
                 jogador_2:{
-                    icon: "gana",
+                    bnd: "gana",
                     nome: "Gana"
                 },
                 hora: "10:00",
@@ -414,11 +414,11 @@ const Jogos = {
             },
             jogo_3: {
                 jogador_1: {
-                    icon: "brasil",
+                    bnd: "brasil",
                     nome: "Brasil"
                 },
                 jogador_2:{
-                    icon: "suica",
+                    bnd: "suica",
                     nome: "Suíça"
                 },
                 hora: "13:00",
@@ -426,11 +426,11 @@ const Jogos = {
             },
             jogo_4: {
                 jogador_1: {
-                    icon: "portugal",
+                    bnd: "portugal",
                     nome: "Portugal"
                 },
                 jogador_2:{
-                    icon: "uruguai",
+                    bnd: "uruguai",
                     nome: "Uruguai"
                 },
                 hora: "16:00",
@@ -444,11 +444,11 @@ const Jogos = {
         jogos: {
             jogo_1: {
                 jogador_1: {
-                    icon: "equador",
+                    bnd: "equador",
                     nome: "Equador"
                 },
                 jogador_2:{
-                    icon: "senegal",
+                    bnd: "senegal",
                     nome: "Senegal"
                 },
                 hora: "12:00",
@@ -456,11 +456,11 @@ const Jogos = {
             },
             jogo_2: {
                 jogador_1: {
-                    icon: "holanda",
+                    bnd: "holanda",
                     nome: "Holanda"
                 },
                 jogador_2:{
-                    icon: "catar",
+                    bnd: "catar",
                     nome: "Catar"
                 },
                 hora: "12:00",
@@ -468,11 +468,11 @@ const Jogos = {
             },
             jogo_3: {
                 jogador_1: {
-                    icon: "ira",
+                    bnd: "ira",
                     nome: "Irã"
                 },
                 jogador_2:{
-                    icon: "estados-unidos",
+                    bnd: "estados-unidos",
                     nome: "EUA"
                 },
                 hora: "16:00",
@@ -480,11 +480,11 @@ const Jogos = {
             },
             jogo_4: {
                 jogador_1: {
-                    icon: "pais-de-gales",
+                    bnd: "pais-de-gales",
                     nome: "Gales"
                 },
                 jogador_2:{
-                    icon: "inglaterra",
+                    bnd: "inglaterra",
                     nome: "Inglaterra"
                 },
                 hora: "16:00",
@@ -498,11 +498,11 @@ const Jogos = {
         jogos: {
             jogo_1: {
                 jogador_1: {
-                    icon: "tunisia",
+                    bnd: "tunisia",
                     nome: "Tunísia"
                 },
                 jogador_2:{
-                    icon: "franca",
+                    bnd: "franca",
                     nome: "França"
                 },
                 hora: "12:00",
@@ -510,11 +510,11 @@ const Jogos = {
             },
             jogo_2: {
                 jogador_1: {
-                    icon: "australia",
+                    bnd: "australia",
                     nome: "Austrália"
                 },
                 jogador_2:{
-                    icon: "dinamarca",
+                    bnd: "dinamarca",
                     nome: "Dinamarca"
                 },
                 hora: "12:00",
@@ -522,11 +522,11 @@ const Jogos = {
             },
             jogo_3: {
                 jogador_1: {
-                    icon: "polonia",
+                    bnd: "polonia",
                     nome: "Polônia"
                 },
                 jogador_2:{
-                    icon: "argentina",
+                    bnd: "argentina",
                     nome: "Argentina"
                 },
                 hora: "16:00",
@@ -534,11 +534,11 @@ const Jogos = {
             },
             jogo_4: {
                 jogador_1: {
-                    icon: "arabia-saudita",
+                    bnd: "arabia-saudita",
                     nome: "Arábia S."
                 },
                 jogador_2:{
-                    icon: "mexico",
+                    bnd: "mexico",
                     nome: "México"
                 },
                 hora: "16:00",
@@ -552,11 +552,11 @@ const Jogos = {
         jogos: {
             jogo_1: {
                 jogador_1: {
-                    icon: "croacia",
+                    bnd: "croacia",
                     nome: "Croácia"
                 },
                 jogador_2:{
-                    icon: "belgica",
+                    bnd: "belgica",
                     nome: "Bélgica"
                 },
                 hora: "12:00",
@@ -564,11 +564,11 @@ const Jogos = {
             },
             jogo_2: {
                 jogador_1: {
-                    icon: "canada",
+                    bnd: "canada",
                     nome: "Canadá"
                 },
                 jogador_2:{
-                    icon: "marrocos",
+                    bnd: "marrocos",
                     nome: "Marrocos"
                 },
                 hora: "12:00",
@@ -576,11 +576,11 @@ const Jogos = {
             },
             jogo_3: {
                 jogador_1: {
-                    icon: "japao",
+                    bnd: "japao",
                     nome: "Japão"
                 },
                 jogador_2:{
-                    icon: "espanha",
+                    bnd: "espanha",
                     nome: "Espanha"
                 },
                 hora: "16:00",
@@ -588,11 +588,11 @@ const Jogos = {
             },
             jogo_4: {
                 jogador_1: {
-                    icon: "costa-rica",
+                    bnd: "costa-rica",
                     nome: "Costa Rica"
                 },
                 jogador_2:{
-                    icon: "alemanha",
+                    bnd: "alemanha",
                     nome: "Alemanha"
                 },
                 hora: "16:00",
@@ -606,11 +606,11 @@ const Jogos = {
         jogos: {
             jogo_1: {
                 jogador_1: {
-                    icon: "coreia-do-sul",
+                    bnd: "coreia-do-sul",
                     nome: "Coréia do Sul"
                 },
                 jogador_2:{
-                    icon: "portugal",
+                    bnd: "portugal",
                     nome: "Portugal"
                 },
                 hora: "12:00",
@@ -618,11 +618,11 @@ const Jogos = {
             },
             jogo_2: {
                 jogador_1: {
-                    icon: "gana",
+                    bnd: "gana",
                     nome: "Gana"
                 },
                 jogador_2:{
-                    icon: "uruguai",
+                    bnd: "uruguai",
                     nome: "Uruguai"
                 },
                 hora: "12:00",
@@ -630,11 +630,11 @@ const Jogos = {
             },
             jogo_3: {
                 jogador_1: {
-                    icon: "servia",
+                    bnd: "servia",
                     nome: "Sérvia"
                 },
                 jogador_2:{
-                    icon: "suica",
+                    bnd: "suica",
                     nome: "Suiça"
                 },
                 hora: "16:00",
@@ -642,11 +642,11 @@ const Jogos = {
             },
             jogo_4: {
                 jogador_1: {
-                    icon: "camaroes",
+                    bnd: "camaroes",
                     nome: "Camarões"
                 },
                 jogador_2:{
-                    icon: "brasil",
+                    bnd: "brasil",
                     nome: "Brasil"
                 },
                 hora: "16:00",
@@ -654,17 +654,307 @@ const Jogos = {
             }
         }
     }
-}
+};
+
+// Grupos da Copa do mundo
+const Grupos = {
+    grupo_a:{
+        T1:{
+            bnd: "catar",
+            nome: "Catar",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T2:{ 
+            bnd: "equador",
+            nome: "Equador",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T3:{
+            bnd: "senegal",
+            nome: "Senegal",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T4:{
+            bnd: "holanda",
+            nome: "Holanda",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        nome: "Grupo A"
+    },
+    grupo_b:{
+        T1: {
+            bnd: "inglaterra",
+            nome: "Inglaterra",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T2: {
+            bnd: "ira",
+            nome: "Irã",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T3: {
+            bnd: "estados-unidos",
+            nome: "EUA",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T4: {
+            bnd: "pais-de-gales",
+            nome: "Gales",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        nome: "Grupo B"
+    },
+    grupo_c:{
+        T1: {
+            bnd: "argentina",
+            nome: "Argentina",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T2: {
+            bnd: "arabia-saudita",
+            nome: "Arábia S.",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T3: {
+            bnd: "mexico",
+            nome: "México",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T4: {
+            bnd: "polonia",
+            nome: "Polônia",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        nome: "Grupo C"
+    },
+    grupo_d:{
+        T1: {
+            bnd: "franca",
+            nome: "França",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T2: {
+            bnd: "australia",
+            nome: "Austrália",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T3: {
+            bnd: "dinamarca",
+            nome: "Dinamarca",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T4: {
+            bnd: "tunisia",
+            nome: "Tunísia",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        nome: "Grupo D"
+    },
+    grupo_e:{
+        T1: {
+            bnd: "espanha",
+            nome: "Espanha",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T2: {
+            bnd: "costa-rica",
+            nome: "Costa Rica",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T3: {
+            bnd: "alemanha",
+            nome: "Alemanha",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T4: {
+            bnd: "japao",
+            nome: "Japão",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        nome: "Grupo E"
+    },
+    grupo_f:{
+        T1: {
+            bnd: "belgica",
+            nome: "Bélgica",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T2: {
+            bnd: "canada",
+            nome: "Canadá",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T3: {
+            bnd: "marrocos",
+            nome: "Marrocos",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T4: {
+            bnd: "croacia",
+            nome: "Croácia",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        nome: "Grupo F"
+    },
+    grupo_g:{
+        T1: {
+            bnd: "brasil",
+            nome: "Brasil",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T2: {
+            bnd: "servia",
+            nome: "Sérvia",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T3: {
+            bnd: "suica",
+            nome: "Suiça",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T4: {
+            bnd: "camaroes",
+            nome: "Camarões",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        nome: "Grupo G"
+    },
+    grupo_h:{
+        T1: {
+            bnd: "portugal",
+            nome: "Portugal",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T2: {
+            bnd: "gana",
+            nome: "Gana",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T3: {
+            bnd: "uruguai",
+            nome: "Uruguai",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        T4: {
+            bnd: "coreia-do-sul",
+            nome: "Coréia do Sul",
+            v: 0,
+            e: 0,
+            d: 0,
+            sg: 0
+        },
+        nome: "Grupo H"
+    }
+};
 
 // Variaveis
 let mainHTML = document.querySelector('#cards'); // Selecionando a div MAIN
 let bandeiras = document.getElementsByClassName("bandeira"); // Selecionando todos cards
 let body = document.getElementsByTagName('body');
-let height = 0;
 let i = 0; // Variável criada para entrar em cada Card dentro da div MAIN
 let delay = 0;
 
-// Funções
+
+// ~~~~~~~~~ Funções ~~~~~~~~~~~~
+const zerarVarIeDelay = () => {
+    i = 0;
+    delay = 0;
+};
+
+// Animação na Bandeira - MOUSEOVER
 const ouvindoBandeiras = (e) => {
     let strong = e.target.parentElement.parentElement.children[1];
     let img = e.target.parentElement.children[0];
@@ -679,8 +969,9 @@ const ouvindoBandeiras = (e) => {
     p.style.visibility = "visible";
     p.style.transition = "0.5s";
     p.style.transform = "scale(1.7)";        
-}
+};
 
+// Animação na Bandeira - MOUSEOUT
 const esconderNomeBandeiras = (e) => {
     let strong = e.target.parentElement.parentElement.children[1];
     let img = e.target.parentElement.children[0];
@@ -695,91 +986,128 @@ const esconderNomeBandeiras = (e) => {
     p.style.transform = "scale(0.1)";
     p.style.visibility = "hidden";
     p.style.transition = "0.1s";
-}
-
-let select = document.getElementById('categoria');
-
-
-const valueOptions = (e) => {
-    console.log(select);
-    console.log(e);
-    let optionValue = [];
-    for (let i = 0; i < select.length; i++) {
-        optionValue.push(select[i].attributes.value.value)
-        console.log(select[i].attributes.value.value);
-        console.log(optionValue);
-    }
-}
-valueOptions()
-// select.addEventListener( 'select' , valueOptions)
+};
 
 // Criação de Cards - Fase de Grupos
-// for (const dataJogos in Jogos) {
+const criarFaseDeGrupos = () => {
+    for (const dataJogos in Jogos) {
 
-//     // Adicionando uma Card para cada data dentro do objeto Jogos
-//     mainHTML.innerHTML += `
-//         <div hidden class="card" id="faseDeGrupos" style="animation-delay: ${delay}s">
-//             <h2> ${Jogos[dataJogos].data} <span>${Jogos[dataJogos].diaDaSemana}</span></h2>
-//         </div>`
+        // Adicionando uma Card para cada data dentro do objeto Jogos
+        mainHTML.innerHTML += `
+            <div class="card" id="faseDeGrupos" style="animation-delay: ${delay}s">
+                <h2> ${Jogos[dataJogos].data} <span>${Jogos[dataJogos].diaDaSemana}</span></h2>
+            </div>`
 
-//     // Adicionando uma tag "<ul>" para cada Card
-//     mainHTML.children[i].innerHTML += `<ul></ul>`
-    
-//     // Adicionando "li" (item de lista) dentro do "ul" para cada jogo do dia
-//     for (const jogo in Jogos[dataJogos].jogos) {
+        // Adicionando uma tag "<ul>" para cada Card
+        mainHTML.children[i].innerHTML += `<ul></ul>`
         
-//         // Variavel criada para simplificar o chamado
-//         let jogoAtual = Jogos[dataJogos].jogos[jogo];
+        // Adicionando "li" (item de lista) dentro do "ul" para cada jogo do dia
+        for (const jogo in Jogos[dataJogos].jogos) {
+            
+            // Variavel criada para simplificar o chamado
+            let jogoAtual = Jogos[dataJogos].jogos[jogo];
+            
+            mainHTML.children[i].children[1].innerHTML += `
+            <li>
+            <div class="bandeira">
+            <img src="./assets/bandeiras/icon-${jogoAtual.jogador_1.bnd}.svg" alt="Bandeira do ${jogoAtual.jogador_1}">
+            <p>${jogoAtual.jogador_1.nome}</p>
+            </div>
+            <strong>${jogoAtual.hora}</strong>
+            <div class="bandeira">
+            <img src="./assets/bandeiras/icon-${jogoAtual.jogador_2.bnd}.svg" alt="Bandeira do ${jogoAtual.jogador_2}">
+            <p>${jogoAtual.jogador_2.nome}</p>
+            </div>
+            </li>
+            `
+        }
         
-//         mainHTML.children[i].children[1].innerHTML += `
-//         <li>
-//         <div class="bandeira">
-//         <img src="./assets/bandeiras/icon-${jogoAtual.jogador_1.icon}.svg" alt="Bandeira do ${jogoAtual.jogador_1}">
-//         <p>${jogoAtual.jogador_1.nome}</p>
-//         </div>
-//         <strong>${jogoAtual.hora}</strong>
-//         <div class="bandeira">
-//         <img src="./assets/bandeiras/icon-${jogoAtual.jogador_2.icon}.svg" alt="Bandeira do ${jogoAtual.jogador_2}">
-//         <p>${jogoAtual.jogador_2.nome}</p>
-//         </div>
-//         </li>
-//         `
-//     }
-    
-//     // Próximo Card
-//     i++
-//     delay += 0.3;
-// }
+        // Próximo Card
+        i++
+        delay += 0.3;
+    };
+}
 
-// Criação de Card - Tabela
-// for (const dataJogos in Jogos) {
+// Tratando o SELECT
+// let select = document.getElementById('categoria');
+// const valueOptions = (e) => {
+    //     let optionValue = [];
+    //     for (let i = 0; i < select.length; i++) {
+        //         optionValue.push(select[i].attributes.value.value)
+        //         // console.log(select[i].attributes.value.value);
+        //         // console.log(optionValue);
+        //     }
+        // }
+        // valueOptions()
+        // select.addEventListener( 'select' , valueOptions)
+        
+        // Criação de Card - Tabela
+        
+for (const grupo in Grupos) {
+    // Adicionando uma Card para cada grupo dentro do objeto Grupos
+    mainHTML.innerHTML += `
+        <div class="card grid-container" id="tabela">
+            <div class="grupo grid-row">${Grupos[grupo].nome}</div>
 
-//     // Adicionando uma Card para cada data dentro do objeto Jogos
-//     mainHTML.innerHTML += `
-//         <div class="card" id="tabela">
-//             <table>
-//                 <tr>
-//                     <th>
-//                     </th>
-//                 </tr>
-//                 <tr>
-//                 </tr>
-//                 <tr>
-//                 </tr>
-//                 <tr>
-//                 </tr>
-//                 <tr>
-//                 </tr>
-//             </table>
-//         </div>
-//     `
-// }
+            <div class="grid-row titulos">
+                <div class="grid-item titulo-equipe">
+                    Equipe
+                </div class="grid-item">
+                <div class="grid-item">
+                    Pts
+                </div class="grid-item">
+                <div class="grid-item">
+                    PJ
+                </div class="grid-item">
+                <div class="grid-item">
+                    V
+                </div class="grid-item">
+                <div class="grid-item">
+                    E
+                </div class="grid-item">
+                <div class="grid-item">
+                    D
+                </div class="grid-item">
+                <div class="grid-item">
+                    SG
+                </div class="grid-item">
+            </div>
+        </div>
+        `
+
+        let j = 1;
+
+    for ( time in Grupos[grupo]) {
+        let timeDoGrupo = Grupos[grupo][time]
+
+        if(time !== "nome" ){
+            mainHTML.children[i].innerHTML +=`
+            <div class="grid-row times">
+                <div class="grid-item equipe">
+                    <p>${j}</p>
+                    <img alt="bandeira" src="./assets/bandeiras/icon-${timeDoGrupo.bnd}.svg">
+                    <p>${timeDoGrupo.nome}</p>
+                </div>
+                <div class="grid-item">${(3*timeDoGrupo.v)+(timeDoGrupo.e)}</div>
+                <div class="grid-item">${(timeDoGrupo.v)+(timeDoGrupo.e)+(timeDoGrupo.d)}</div>
+                <div class="grid-item">${timeDoGrupo.v}</div>
+                <div class="grid-item">${timeDoGrupo.e}</div>
+                <div class="grid-item">${timeDoGrupo.d}</div>
+                <div class="grid-item">${timeDoGrupo.sg}</div>
+            </div>
+            `
+            j++
+        }
+    }
+    i++
+};
+
 
 // Efeito das bandeiras ao passar o mouse
-for (let i = 0; i < bandeiras.length; i++) {
-    bandeiras[i].addEventListener("mouseover", ouvindoBandeiras);
-    bandeiras[i].addEventListener("mouseout", esconderNomeBandeiras);
-}
+// for (let i = 0; i < bandeiras.length; i++) {
+//     bandeiras[i].addEventListener("mouseover", ouvindoBandeiras);
+//     bandeiras[i].addEventListener("mouseout", esconderNomeBandeiras);
+// };
 
 
 

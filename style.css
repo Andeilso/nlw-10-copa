@@ -130,9 +130,93 @@ div.bandeira p{
 }
 
 
-/* Estilo Div Tabela */
-div.card{
+/* Estilo Tabela */
+div.grid-container{
+    display: grid;
+    grid-template-rows: repeat(7, auto);
+
+    width: 600px;
+    height: 350px;
+    margin: 0px;
+    margin-top: 32px;
+    padding: 0px;
+    padding-bottom: 10px;
+}
+
+div.card div.grupo{
+    grid-row-start: 1;
+    grid-row-end: 3;
     
+    align-self: center;
+
+    padding-bottom: 14px;
+    font-size: 30px;
+    text-transform: uppercase;
+
+    border-bottom: 1px solid white;
+    border-radius: 5px;
+}
+
+div.titulos{
+    display: grid;
+    grid-template-columns: repeat(14, 40px);
+
+    align-items: center;
+    align-content: center;
+    border-bottom: 1px solid #F7DD43;
+    padding: 0px 5px;
+    margin: 0px 10px;
+}
+
+div.titulos div.grid-item + div.grid-item,
+div.times div.grid-item + div.grid-item{
+    padding: 8px 0px;
+    border-left: 1px solid #F7DD43;
+}
+
+div.titulos div.grid-item:last-child,
+div.times div.grid-item:last-child{
+    border-right: 1px solid #F7DD43;
+}
+
+
+main#cards div.titulos div.titulo-equipe{
+    grid-column-start: 1;
+    grid-column-end: 9;
+
+    text-align: start;
+    padding-left: 20px;
+}
+
+main#cards div.times{
+    display: grid;
+    grid-template-columns: repeat(14, 40px);
+
+    align-items: center;
+
+    padding: 0px 5px;
+    margin: 0px 10px;
+}
+
+main#cards div.times + div.times{
+    border-top: 1px solid #3d3d3d;
+}
+
+main#cards div.times div.equipe{
+    grid-column-start: 1;
+    grid-column-end: 9;
+    
+    display: flex;
+    align-items: center;
+}
+
+div.times div.equipe p,
+div.times div.equipe img{
+    margin-right: 12px;
+}
+
+div.times div.equipe img{
+    width: 25px;
 }
 
 
@@ -147,9 +231,8 @@ div.card{
 @media (min-width: 1030px) {
     body{
         height: auto;
-        background-repeat: round;
         background-position-x: 0%;
-        background-position-y: -42%;
+        background-position-y: 50%;
     }
 
     #cards{
