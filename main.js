@@ -1,3 +1,160 @@
+// Variaveis
+let mainHTML = document.querySelector('#cards'); // Selecionando a div MAIN
+let bandeiras = document.getElementsByClassName("bandeira"); // Selecionando todos cards
+let body = document.getElementsByTagName('body');
+let select = document.getElementById('categoria');
+
+
+// Funções
+// Animação na Bandeira - MOUSEOVER
+const ouvindoBandeiras = (e) => {
+    let strong = e.target.parentElement.parentElement.children[1];
+    let img = e.target.parentElement.children[0];
+    let p = e.target.parentElement.children[1];
+    
+    strong.style.visibility = "visible";
+    
+    img.style.transform = "scale(1.2)";
+    img.style.marginTop = "-30px";
+    img.style.transition = "0.5s";
+    
+    p.style.visibility = "visible";
+    p.style.transition = "0.5s";
+    p.style.transform = "scale(1.7)";        
+};
+
+// Animação na Bandeira - MOUSEOUT
+const esconderNomeBandeiras = (e) => {
+    let strong = e.target.parentElement.parentElement.children[1];
+    let img = e.target.parentElement.children[0];
+    let p = e.target.parentElement.children[1];
+    
+    strong.style.visibility = "visible";
+    
+    img.style.transform = "scale(1)";
+    img.style.marginTop = "0px";
+    img.style.transition = "0.2s";
+    
+    p.style.transform = "scale(0.1)";
+    p.style.visibility = "hidden";
+    p.style.transition = "0.1s";
+};
+
+// Criação de Cards - Fase de Grupos
+const criarFaseDeGrupos = (cont, main = mainHTML) => {
+    let delay = 0;
+    main.innerHTML = ""
+    cont = 0;
+
+    for (const dataJogos in Jogos) {
+
+        // Adicionando uma Card para cada data dentro do objeto Jogos
+        main.innerHTML += `
+            <div class="card" id="faseDeGrupos" style="animation-delay: ${delay}s">
+                <h2> ${Jogos[dataJogos].data} <span>${Jogos[dataJogos].diaDaSemana}</span></h2>
+            </div>`
+
+        // Adicionando uma tag "<ul>" para cada Card
+        main.children[cont].innerHTML += `<ul></ul>`
+        
+        // Adicionando "li" (item de lista) dentro do "ul" para cada jogo do dia
+        for (const jogo in Jogos[dataJogos].jogos) {
+            
+            // Variavel criada para simplificar o chamado
+            let jogoAtual = Jogos[dataJogos].jogos[jogo];
+            
+            main.children[cont].children[1].innerHTML += `
+            <li>
+            <div class="bandeira">
+            <img src="./assets/bandeiras/icon-${jogoAtual.jogador_1.bnd}.svg" alt="Bandeira do ${jogoAtual.jogador_1}">
+            <p>${jogoAtual.jogador_1.nome}</p>
+            </div>
+            <strong>${jogoAtual.hora}</strong>
+            <div class="bandeira">
+            <img src="./assets/bandeiras/icon-${jogoAtual.jogador_2.bnd}.svg" alt="Bandeira do ${jogoAtual.jogador_2}">
+            <p>${jogoAtual.jogador_2.nome}</p>
+            </div>
+            </li>
+            `
+        }
+        
+        // Próximo Card
+        cont++
+        delay += 0.3;
+    };
+}
+
+// Criação de Cards - Tabela de Pontos Fase de grupo
+const criarTabelaDeGrupos = (cont, main = mainHTML) => {
+    main.innerHTML = "";
+    cont = 0;
+    for (const grupo in Grupos) {
+        // Adicionando uma Card para cada grupo dentro do objeto Grupos
+        main.innerHTML += `
+            <div class="card grid-container" id="tabela">
+                <div class="grupo grid-row">${Grupos[grupo].nome}</div>
+    
+                <div class="grid-row titulos">
+                    <div class="grid-item titulo-equipe">
+                        Equipe
+                    </div class="grid-item">
+                    <div class="grid-item">
+                        Pts
+                    </div class="grid-item">
+                    <div class="grid-item">
+                        PJ
+                    </div class="grid-item">
+                    <div class="grid-item">
+                        V
+                    </div class="grid-item">
+                    <div class="grid-item">
+                        E
+                    </div class="grid-item">
+                    <div class="grid-item">
+                        D
+                    </div class="grid-item">
+                    <div class="grid-item">
+                        SG
+                    </div class="grid-item">
+                </div>
+            </div>
+            `
+    
+            let j = 1;
+    
+        for ( time in Grupos[grupo]) {
+            let timeDoGrupo = Grupos[grupo][time]
+    
+            if(time !== "nome" ){
+                main.children[cont].innerHTML +=`
+                <div class="grid-row times">
+                    <div class="grid-item equipe">
+                        <p>${j}</p>
+                        <img alt="bandeira" src="./assets/bandeiras/icon-${timeDoGrupo.bnd}.svg">
+                        <p>${timeDoGrupo.nome}</p>
+                    </div>
+                    <div class="grid-item">${(3*timeDoGrupo.v)+(timeDoGrupo.e)}</div>
+                    <div class="grid-item">${(timeDoGrupo.v)+(timeDoGrupo.e)+(timeDoGrupo.d)}</div>
+                    <div class="grid-item">${timeDoGrupo.v}</div>
+                    <div class="grid-item">${timeDoGrupo.e}</div>
+                    <div class="grid-item">${timeDoGrupo.d}</div>
+                    <div class="grid-item">${timeDoGrupo.sg}</div>
+                </div>
+                `
+                j++
+            }
+        }
+        cont++
+    };
+}
+
+// Tratando o SELECT
+function chamandoTela() {
+    Telas[select.value]();
+}
+
+
+// Objetos
 // Objeto contendo os Jogos, as Datas, os horários, os grupos e os nomes dos times.
 const Jogos = {
     data_20_11: {
@@ -940,174 +1097,28 @@ const Grupos = {
     }
 };
 
-// Variaveis
-let mainHTML = document.querySelector('#cards'); // Selecionando a div MAIN
-let bandeiras = document.getElementsByClassName("bandeira"); // Selecionando todos cards
-let body = document.getElementsByTagName('body');
-let i = 0; // Variável criada para entrar em cada Card dentro da div MAIN
-let delay = 0;
-
-
-// ~~~~~~~~~ Funções ~~~~~~~~~~~~
-const zerarVarIeDelay = () => {
-    i = 0;
-    delay = 0;
+// Objeto com as chamadas de tela
+const Telas = {
+    faseDeGrupos: criarFaseDeGrupos,
+    tabela: criarTabelaDeGrupos,
+    // quartasDeFinal: ,
+    // semifinal: ,
+    // terceiroColocado: ,
+    // Final: ,
 };
 
-// Animação na Bandeira - MOUSEOVER
-const ouvindoBandeiras = (e) => {
-    let strong = e.target.parentElement.parentElement.children[1];
-    let img = e.target.parentElement.children[0];
-    let p = e.target.parentElement.children[1];
-    
-    strong.style.visibility = "visible";
-    
-    img.style.transform = "scale(1.2)";
-    img.style.marginTop = "-30px";
-    img.style.transition = "0.5s";
-    
-    p.style.visibility = "visible";
-    p.style.transition = "0.5s";
-    p.style.transform = "scale(1.7)";        
-};
-
-// Animação na Bandeira - MOUSEOUT
-const esconderNomeBandeiras = (e) => {
-    let strong = e.target.parentElement.parentElement.children[1];
-    let img = e.target.parentElement.children[0];
-    let p = e.target.parentElement.children[1];
-    
-    strong.style.visibility = "visible";
-    
-    img.style.transform = "scale(1)";
-    img.style.marginTop = "0px";
-    img.style.transition = "0.2s";
-    
-    p.style.transform = "scale(0.1)";
-    p.style.visibility = "hidden";
-    p.style.transition = "0.1s";
-};
-
-// Criação de Cards - Fase de Grupos
-const criarFaseDeGrupos = () => {
-    for (const dataJogos in Jogos) {
-
-        // Adicionando uma Card para cada data dentro do objeto Jogos
-        mainHTML.innerHTML += `
-            <div class="card" id="faseDeGrupos" style="animation-delay: ${delay}s">
-                <h2> ${Jogos[dataJogos].data} <span>${Jogos[dataJogos].diaDaSemana}</span></h2>
-            </div>`
-
-        // Adicionando uma tag "<ul>" para cada Card
-        mainHTML.children[i].innerHTML += `<ul></ul>`
-        
-        // Adicionando "li" (item de lista) dentro do "ul" para cada jogo do dia
-        for (const jogo in Jogos[dataJogos].jogos) {
-            
-            // Variavel criada para simplificar o chamado
-            let jogoAtual = Jogos[dataJogos].jogos[jogo];
-            
-            mainHTML.children[i].children[1].innerHTML += `
-            <li>
-            <div class="bandeira">
-            <img src="./assets/bandeiras/icon-${jogoAtual.jogador_1.bnd}.svg" alt="Bandeira do ${jogoAtual.jogador_1}">
-            <p>${jogoAtual.jogador_1.nome}</p>
-            </div>
-            <strong>${jogoAtual.hora}</strong>
-            <div class="bandeira">
-            <img src="./assets/bandeiras/icon-${jogoAtual.jogador_2.bnd}.svg" alt="Bandeira do ${jogoAtual.jogador_2}">
-            <p>${jogoAtual.jogador_2.nome}</p>
-            </div>
-            </li>
-            `
-        }
-        
-        // Próximo Card
-        i++
-        delay += 0.3;
-    };
-}
-
-// Tratando o SELECT
-// let select = document.getElementById('categoria');
-// const valueOptions = (e) => {
-    //     let optionValue = [];
-    //     for (let i = 0; i < select.length; i++) {
-        //         optionValue.push(select[i].attributes.value.value)
-        //         // console.log(select[i].attributes.value.value);
-        //         // console.log(optionValue);
-        //     }
-        // }
-        // valueOptions()
-        // select.addEventListener( 'select' , valueOptions)
-        
-        // Criação de Card - Tabela
-        
-for (const grupo in Grupos) {
-    // Adicionando uma Card para cada grupo dentro do objeto Grupos
-    mainHTML.innerHTML += `
-        <div class="card grid-container" id="tabela">
-            <div class="grupo grid-row">${Grupos[grupo].nome}</div>
-
-            <div class="grid-row titulos">
-                <div class="grid-item titulo-equipe">
-                    Equipe
-                </div class="grid-item">
-                <div class="grid-item">
-                    Pts
-                </div class="grid-item">
-                <div class="grid-item">
-                    PJ
-                </div class="grid-item">
-                <div class="grid-item">
-                    V
-                </div class="grid-item">
-                <div class="grid-item">
-                    E
-                </div class="grid-item">
-                <div class="grid-item">
-                    D
-                </div class="grid-item">
-                <div class="grid-item">
-                    SG
-                </div class="grid-item">
-            </div>
-        </div>
-        `
-
-        let j = 1;
-
-    for ( time in Grupos[grupo]) {
-        let timeDoGrupo = Grupos[grupo][time]
-
-        if(time !== "nome" ){
-            mainHTML.children[i].innerHTML +=`
-            <div class="grid-row times">
-                <div class="grid-item equipe">
-                    <p>${j}</p>
-                    <img alt="bandeira" src="./assets/bandeiras/icon-${timeDoGrupo.bnd}.svg">
-                    <p>${timeDoGrupo.nome}</p>
-                </div>
-                <div class="grid-item">${(3*timeDoGrupo.v)+(timeDoGrupo.e)}</div>
-                <div class="grid-item">${(timeDoGrupo.v)+(timeDoGrupo.e)+(timeDoGrupo.d)}</div>
-                <div class="grid-item">${timeDoGrupo.v}</div>
-                <div class="grid-item">${timeDoGrupo.e}</div>
-                <div class="grid-item">${timeDoGrupo.d}</div>
-                <div class="grid-item">${timeDoGrupo.sg}</div>
-            </div>
-            `
-            j++
-        }
-    }
-    i++
-};
-
+// Event Listener
+// Ouvindo as mudanças do SELECT
+select.addEventListener('change' , chamandoTela)        
 
 // Efeito das bandeiras ao passar o mouse
-// for (let i = 0; i < bandeiras.length; i++) {
-//     bandeiras[i].addEventListener("mouseover", ouvindoBandeiras);
-//     bandeiras[i].addEventListener("mouseout", esconderNomeBandeiras);
-// };
+for (let i = 0; i < bandeiras.length; i++) {
+    bandeiras[i].addEventListener("mouseover", ouvindoBandeiras);
+    bandeiras[i].addEventListener("mouseout", esconderNomeBandeiras);
+};
+
+// Iniciar a tela com Fase de Grupo
+Telas.faseDeGrupos();
 
 
 

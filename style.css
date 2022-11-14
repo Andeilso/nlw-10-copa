@@ -35,6 +35,7 @@ main#cards {
     gap: 32px;
     
     color: white;
+    margin-top: 50px;
 }
 
 div.card{
