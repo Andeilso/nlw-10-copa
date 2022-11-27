@@ -130,6 +130,44 @@ div.bandeira p{
     transition: 0.5s;
 }
 
+div.horaPlacar{
+    width: 100px;
+    position: relative;
+}
+
+div.horaPlacar strong.tituloPlacar{
+    position: absolute;
+    font-size: 13px;
+    top: -23px;
+    left: 25%;
+
+    text-transform: uppercase;
+}
+
+div.horaPlacar div.placar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+div.horaPlacar div.placar p:nth-child(1),
+div.horaPlacar div.placar p:nth-child(3){
+    font-size: 25px;
+    background-color: #4141415b;
+    padding: 1px 7px;
+    border-radius: 10px;
+}
+
+div.horaPlacar strong.aoVivo{
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+div.horaPlacar strong.aguarde{
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
 
 /* Estilo Tabela */
 div.grid-container{

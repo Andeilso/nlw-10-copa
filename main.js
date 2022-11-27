@@ -3,6 +3,7 @@ let mainHTML = document.querySelector('#cards'); // Selecionando a div MAIN
 let bandeiras = document.getElementsByClassName("bandeira"); // Selecionando todos cards
 let body = document.getElementsByTagName('body');
 let select = document.getElementById('categoria');
+let data = new Date();
 
 
 // Funções
@@ -22,6 +23,88 @@ const ouvindoBandeiras = (e) => {
     p.style.transition = "0.5s";
     p.style.transform = "scale(1.7)";        
 };
+
+const jogosAteOntem = (ulAtual, key, pegarHoraJogo) => {
+    //Trabalhando no Objeto JogosPassados
+    let dataJogosPassadosKey = Object.keys(JogosPassados);
+    let jogosPassadosKey = Object.keys(JogosPassados[dataJogosPassadosKey[key]])
+    
+    //Para cada li dentro da ul atual faça:
+    for (let i = 0; i < ulAtual.children.length; i++) {
+        
+        //Resultado do jogo dentro do Objeto JogosPassados
+        let resultadoJogo = JogosPassados[dataJogosPassadosKey[key]][jogosPassadosKey[i]];
+
+        //Tirar erro do Objeto JogosAnteriores, que não estão com todos os jogos da data setados
+        if (resultadoJogo === undefined) {
+            return
+        }
+        
+        //Keys dos resultados dos jogos dentro do Objeto JogosPassado
+        let resultadoJogoKey = Object.keys(resultadoJogo);
+        
+        //Div com a class horaPlacar
+        let horaPlacar = ulAtual.children[i].children[1];
+        
+        
+        //Trocando horário por resultado dos jogos
+        horaPlacar.innerHTML = `
+        <strong class="tituloPlacar">Placar</strong>
+        <div class="placar">
+        <p>${resultadoJogo[resultadoJogoKey[0]]}</p>
+        <p>x</p>
+        <p>${resultadoJogo[resultadoJogoKey[1]]}</p>
+        </div>
+        `
+    }
+}
+
+const jogosHoje = (ulAtual, pegarHoraJogo) => {
+    //Data atual usando new Date()
+    let horaAtual = data.getHours();
+    let jogo = Object.keys(pegarHoraJogo)
+
+    //Para cada li dentro da ul atual faça:
+    for (let i = 0; i < ulAtual.children.length; i++) {
+        //Tratando o Objeto pegarHoraJogo para pegar as Horas
+        let horaDoJogo = pegarHoraJogo[jogo[i]].hora.split(':')[0];
+
+        //Div com a class horaPlacar
+        let horaPlacar = ulAtual.children[i].children[1];
+
+        if( (horaAtual >= horaDoJogo) 
+        && (horaAtual <= (Number(horaDoJogo)+1)) ){
+            horaPlacar.innerHTML = `
+                <strong class="aoVivo">Ao Vivo</strong>
+            `
+        } else if (horaAtual > horaDoJogo){
+            console.log(ulAtual.children[i].children[1].children.length);
+            if(ulAtual.children[i].children[1].children.length < 2){
+                horaPlacar.innerHTML = `
+                    <strong class="aguarde">Aguardando<strong>
+                `
+            }
+        }
+        
+    }
+}
+
+const horaOuPlacar = (ulAtual, dataDoJogo, key, pegarHoraJogo) => {
+    //Data atual usando new Date()
+    let dataAtual = data.getDate();
+    let mesAtual = (data.getMonth())+1;
+    console.log(key);
+
+    if ( (dataAtual >= dataDoJogo.split('/')[0])
+    && (mesAtual >= dataDoJogo.split('/')[1]) ) {
+        jogosAteOntem(ulAtual, key, pegarHoraJogo);
+    }
+
+    if ( (dataAtual.toString() === dataDoJogo.split('/')[0])
+    && (mesAtual.toString() === dataDoJogo.split('/')[1]) ){
+        jogosHoje(ulAtual, pegarHoraJogo);
+    }
+}
 
 // Animação na Bandeira - MOUSEOUT
 const esconderNomeBandeiras = (e) => {
@@ -46,13 +129,14 @@ const criarFaseDeGrupos = (cont, main = mainHTML) => {
     main.innerHTML = ""
     cont = 0;
 
-    for (const dataJogos in Jogos) {
 
+    for (const dataJogos in Jogos) {
+        
         // Adicionando uma Card para cada data dentro do objeto Jogos
         main.innerHTML += `
-            <div class="card" id="faseDeGrupos" style="animation-delay: ${delay}s">
-                <h2> ${Jogos[dataJogos].data} <span>${Jogos[dataJogos].diaDaSemana}</span></h2>
-            </div>`
+        <div class="card" id="faseDeGrupos" style="animation-delay: ${delay}s">
+        <h2> ${Jogos[dataJogos].data} <span>${Jogos[dataJogos].diaDaSemana}</span></h2>
+        </div>`
 
         // Adicionando uma tag "<ul>" para cada Card
         main.children[cont].innerHTML += `<ul></ul>`
@@ -62,26 +146,36 @@ const criarFaseDeGrupos = (cont, main = mainHTML) => {
             
             // Variavel criada para simplificar o chamado
             let jogoAtual = Jogos[dataJogos].jogos[jogo];
+            let divAtual = main.children[cont].children[1];
             
-            main.children[cont].children[1].innerHTML += `
+            divAtual.innerHTML += `
             <li>
-            <div class="bandeira">
-            <img src="./assets/bandeiras/icon-${jogoAtual.jogador_1.bnd}.svg" alt="Bandeira do ${jogoAtual.jogador_1}">
-            <p>${jogoAtual.jogador_1.nome}</p>
-            </div>
-            <strong>${jogoAtual.hora}</strong>
-            <div class="bandeira">
-            <img src="./assets/bandeiras/icon-${jogoAtual.jogador_2.bnd}.svg" alt="Bandeira do ${jogoAtual.jogador_2}">
-            <p>${jogoAtual.jogador_2.nome}</p>
-            </div>
+                <div class="bandeira">
+                    <img src="./assets/bandeiras/icon-${jogoAtual.jogador_1.bnd}.svg" alt="Bandeira do ${jogoAtual.jogador_1}">
+                    <p>${jogoAtual.jogador_1.nome}</p>
+                </div>
+                <div class="horaPlacar">
+                    <strong>${jogoAtual.hora}</strong> 
+                </div>
+                <div class="bandeira">
+                <img src="./assets/bandeiras/icon-${jogoAtual.jogador_2.bnd}.svg" alt="Bandeira do ${jogoAtual.jogador_2}">
+                    <p>${jogoAtual.jogador_2.nome}</p>
+                </div>
             </li>
             `
         }
         
+        // Após adicionar os jogos, chamo a função horaOuPlacar para ver se o jogo já passou.
+        let ulAtual = main.children[cont].children[1];
+        let dataDoJogo = Jogos[dataJogos].data;
+        let pegarHoraJogo = Jogos[dataJogos].jogos;
+        horaOuPlacar(ulAtual, dataDoJogo, cont, pegarHoraJogo);
+
         // Próximo Card
         cont++
         delay += 0.3;
     };
+    
 }
 
 // Criação de Cards - Tabela de Pontos Fase de grupo
@@ -1106,6 +1200,134 @@ const Telas = {
     // terceiroColocado: ,
     // Final: ,
 };
+
+const JogosPassados = {
+    dia_20_11: {
+        jogo1: {
+            catar: 0,
+            equador: 2
+        }
+    },
+    dia_21_11: {
+        jogo1: {
+            inglaterra: 6,
+            ira: 2
+        },
+        jogo2: {
+            senegal: 0,
+            holanda: 2
+        },
+        jogo3: {
+            estadosUnidos: 1,
+            paisDeGales: 1
+        }
+    },
+    dia_22_11: {
+        jogo1: {
+            argentina: 1,
+            arabiaSaudita: 2
+        },
+        jogo2: {
+            dinamarca: 0,
+            tunisia: 0
+        },
+        jogo3: {
+            mexico: 0,
+            polonia: 0
+        },
+        jogo4: {
+            franca: 4,
+            australia: 1
+        }
+    },
+    dia_23_11: {
+        jogo1:{
+            marrocos: 0,
+            croacia: 0
+        },
+        jogo2:{
+            alemanha: 1,
+            japao: 2
+        },
+        jogo3:{
+            espanha: 7,
+            costaRica: 0
+        },
+        jogo4: {
+            belgica: 1,
+            canada: 0
+        }
+    },
+    dia_24_11:{
+        jogo1:{
+            suica: 1,
+            camaroes: 0
+        },
+        jogo2:{
+            uruguai: 0,
+            coreiaDoSul: 0
+        },
+        jogo3:{
+            portugal: 3,
+            gana: 2
+        },
+        jogo4:{
+            brasil: 2,
+            servia: 0
+        }
+    },
+    dia_25_11:{
+        jogo1:{
+            paisDeGales: 0,
+            ira: 2
+        },
+        jogo2:{
+            catar: 1,
+            senegal: 3
+        },
+        jogo3: {
+            holanda: 1,
+            equador: 1
+        },
+        jogo4:{
+            inglaterra: 0,
+            estadosUnidos: 0
+        }
+    },
+    dia_26_11:{
+        jogo1:{
+            tunisisa: 0,
+            australia: 1
+        },
+        jogo2:{
+            polonia: 2,
+            arabiaSaudita: 0
+        },
+        jogo3:{
+            franca: 2,
+            dinamarca: 1
+        },
+        jogo4:{
+            argentina: 2,
+            mexico: 0
+        }
+    },
+    dia_27_11:{
+        jogo1:{
+            japao: 0,
+            costaRica: 1
+        },
+        jogo2:{
+            belgica: 0,
+            marrocos: 1
+        },
+        jogo3:{
+            croacia: 4,
+            canada: 1
+        }
+    }
+}
+
 
 // Event Listener
 // Ouvindo as mudanças do SELECT
