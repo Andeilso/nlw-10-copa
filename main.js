@@ -1201,6 +1201,7 @@ const Telas = {
     // Final: ,
 };
 
+// Objeto com o placar dos jogos que já foram disputados
 const JogosPassados = {
     dia_20_11: {
         jogo1: {
@@ -1333,15 +1334,16 @@ const JogosPassados = {
 // Ouvindo as mudanças do SELECT
 select.addEventListener('change' , chamandoTela)        
 
+
+// Iniciar a tela com Fase de Grupo
+Telas.faseDeGrupos();
+
+
 // Efeito das bandeiras ao passar o mouse
 for (let i = 0; i < bandeiras.length; i++) {
     bandeiras[i].addEventListener("mouseover", ouvindoBandeiras);
     bandeiras[i].addEventListener("mouseout", esconderNomeBandeiras);
 };
-
-// Iniciar a tela com Fase de Grupo
-Telas.faseDeGrupos();
-
 
 
 
