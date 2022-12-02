@@ -5,6 +5,86 @@ let body = document.getElementsByTagName('body');
 let select = document.getElementById('categoria');
 let data = new Date();
 
+//Array dos times
+let arrayDosTimes = [
+    [
+        ['catar', 'Catar', 0, 0, 0, 0],
+        ['equador', 'Equador', 0, 0, 0, 0],
+        ['senegal', 'Senegal', 0, 0, 0, 0],
+        ['holanda', 'Holanda', 0, 0, 0, 0],
+        ['Grupo A']
+    ],
+    [
+        ['inglaterra', 'Inglaterra', 0, 0, 0, 0],
+        ['ira', 'Irã', 0, 0, 0, 0],
+        ['estados-unidos', 'EUA', 0, 0, 0, 0],
+        ['pais-de-gales', 'Gales', 0, 0, 0, 0],
+        ['Grupo B']
+    ],
+    [
+        ['argentina', 'Argentina', 0, 0, 0, 0],
+        ['arabia-saudita', 'Arábia S.', 0, 0, 0, 0],
+        ['mexico', 'México', 0, 0, 0, 0],
+        ['polonia', 'Polônia', 0, 0, 0, 0],
+        ['Grupo C']
+    ],
+    [
+        ['franca', 'França', 0, 0, 0, 0],
+        ['australia', 'Austrália', 0, 0, 0, 0],
+        ['dinamarca', 'Dinamarca', 0, 0, 0, 0],
+        ['tunisia', 'Tunísia', 0, 0, 0, 0],
+        ['Grupo D'],
+    ],
+    [
+        ['espanha', 'Espanha', 0, 0, 0, 0],
+        ['costa-rica', 'Costa Rica', 0, 0, 0, 0],
+        ['alemanha', 'Alemanha', 0, 0, 0, 0],
+        ['japao', 'Japão', 0, 0, 0, 0],
+        ['Grupo E']
+    ],
+    [
+        ['belgica', 'Bélgica', 0, 0, 0, 0],
+        ['canada', 'Canadá', 0, 0, 0, 0],
+        ['marrocos', 'Marrocos', 0, 0, 0, 0],
+        ['croacia', 'Croácia', 0, 0, 0, 0],
+        ['Grupo F']
+
+    ],
+    [
+        ['brasil', 'Brasil', 0, 0, 0, 0],
+        ['servia', 'Sérvia', 0, 0, 0, 0],
+        ['suica', 'Suiça', 0, 0, 0, 0],
+        ['camaroes', 'Camarões', 0, 0, 0, 0],
+        ['Grupo G']
+    ],
+    [
+        ['portugal', 'Portugal', 0, 0, 0, 0],
+        ['gana', 'Gana', 0, 0, 0, 0],
+        ['uruguai', 'Uruguai', 0, 0, 0, 0],
+        ['coreia-do-sul', 'Coréia do Sul', 0, 0, 0, 0],
+        ['Grupo H']
+    ]
+];
+
+let arrayTeste = [
+    ['brasil', 'Brasil', 2,
+    0,
+    0,
+    3],
+    ['servia', 'Sérvia', 2,
+    0,
+    0,
+    3],
+    ['suica', 'Suiça', 1,
+    0,
+    1,
+    0],
+    ['camaroes', 'Camarões', 0,
+    1,
+    1,
+    -2],
+];
+
 
 // Funções
 // Animação na Bandeira - MOUSEOVER
@@ -24,6 +104,7 @@ const ouvindoBandeiras = (e) => {
     p.style.transform = "scale(1.7)";        
 };
 
+//Setando o placar dos jogos que já passaram
 const jogosAteOntem = (ulAtual, key, pegarHoraJogo) => {
     //Trabalhando no Objeto JogosPassados
     let dataJogosPassadosKey = Object.keys(JogosPassados);
@@ -59,6 +140,7 @@ const jogosAteOntem = (ulAtual, key, pegarHoraJogo) => {
     }
 }
 
+//Setando Ao vivo se o jogo estiver acontecendo, se já passou e não tem placar seta Aguardando.
 const jogosHoje = (ulAtual, pegarHoraJogo) => {
     //Data atual usando new Date()
     let horaAtual = data.getHours();
@@ -78,7 +160,6 @@ const jogosHoje = (ulAtual, pegarHoraJogo) => {
                 <strong class="aoVivo">Ao Vivo</strong>
             `
         } else if (horaAtual > horaDoJogo){
-            console.log(ulAtual.children[i].children[1].children.length);
             if(ulAtual.children[i].children[1].children.length < 2){
                 horaPlacar.innerHTML = `
                     <strong class="aguarde">Aguardando<strong>
@@ -89,14 +170,15 @@ const jogosHoje = (ulAtual, pegarHoraJogo) => {
     }
 }
 
+//Chama as funçoes que setam o placar ou as frases no lugar do horário.
 const horaOuPlacar = (ulAtual, dataDoJogo, key, pegarHoraJogo) => {
     //Data atual usando new Date()
     let dataAtual = data.getDate();
     let mesAtual = (data.getMonth())+1;
-    console.log(key);
 
     if ( (dataAtual >= dataDoJogo.split('/')[0])
-    && (mesAtual >= dataDoJogo.split('/')[1]) ) {
+    && (mesAtual >= dataDoJogo.split('/')[1])
+    || (mesAtual >= dataDoJogo.split('/')[1]) ) {
         jogosAteOntem(ulAtual, key, pegarHoraJogo);
     }
 
@@ -123,6 +205,203 @@ const esconderNomeBandeiras = (e) => {
     p.style.transition = "0.1s";
 };
 
+//Se for maior retorna
+const maiorRetorna = (arrayTeste) => {
+    let pontos = [];
+    let arrayNova = [];
+    let arrayHaIgual = [];
+
+    //Se arrayTeste ainda possuir grupo, mesmo retirando antes
+    // window.alert("Entrando: " + arrayTeste)
+    if (arrayTeste.length > 4) {
+        arrayTeste.pop();
+    }
+
+    //Setando os Pontos que ficaram dentro do array pontos
+    for (let i = 0; i < arrayTeste.length; i++) {
+        pontos.push((arrayTeste[i][2]*3) + arrayTeste[i][3]);
+    }
+
+    //Ajustado os número da array em ordem crescente
+    pontos.sort();
+    //Ajustado os número da array para ordem decrescente
+    pontos.reverse();
+    
+    //Cada ponto dentro do array Pontos faça
+    for (let i = 0; i < arrayTeste.length; i++) {
+        let repete = 0;
+
+        //Para cada pontos dentro do time dentro da arrayTeste faça
+        for (let j = 0; j < arrayTeste.length; j++) {
+
+            //Se pontos for igual soma ao repete (sempre vai ser 1 pelo menos).
+            if (pontos[i] === (arrayTeste[j][2]*3) + arrayTeste[j][3]) {
+                repete += 1; 
+            }
+        }
+
+        //Se repete for igual a 1 vai receber false, quer dizer que não repete mais de uma vez.
+        if (repete === 1) {
+            arrayHaIgual.push(false);
+
+        //Se repetir mais de uma vez adiciona o indice a arrayHaIgual.
+        } else if (repete > 1){
+            arrayHaIgual.push(i);
+        }
+    }
+
+    //Para cada ponto dento do array pontos faça:
+    for (let i = 0; i < arrayTeste.length; i++) {
+
+        //Para cada time dentro da arrayTeste faça
+        for (let j = 0; j < arrayTeste.length; j++) {
+
+            //Se o ponto atual for igual aos pontos do time atual faça:
+            if(pontos[i] === (arrayTeste[j][2]*3) + arrayTeste[j][3]){
+
+                //Variável criada para ver se o arrayNova já possui o time passado.
+                let jaPossui = false;
+
+                //Para cada time dentro da arrayNova faça:
+                for (let k = 0; k < arrayNova.length; k++) {
+                    
+                    //Se o nome do time atual for encontrado dentro da arrayNova faça:
+                    if (arrayTeste[j][1] === arrayNova[k][1]) {
+                        //a variável recebe true para não adicionar o time na arrayNova
+                        jaPossui = true;
+                    }
+
+                }
+                
+                //Se a variável jaPossui for false então adicione o time na arrayNova.
+                if (jaPossui === false && arrayNova.length < 4) {
+
+                    //Os pontos do indice atual se repete?
+                    if(arrayHaIgual[i] && arrayHaIgual[i+1] && arrayTeste[j+1] !== undefined){
+                        
+                        // Se os Pontos atuais for igual a o próximo faça
+                        if((arrayTeste[j][2]*3) + arrayTeste[j][3] === (arrayTeste[j+1][2]*3) + arrayTeste[j+1][3]){
+                            //Se o SG(Saldo de Gols) atual for maior que SG do próximo adiciona o atual e depois o próximo, se não adicione o próximo e depois o atual.
+                            if(arrayTeste[j][5] > arrayTeste[j+1][5]){
+                                arrayNova.push(arrayTeste[j])
+                                j = 4;
+                                
+                            } else {
+                                arrayNova.push(arrayTeste[j+1])
+                                arrayNova.push(arrayTeste[j])
+                                j = 4;
+                            }
+                        
+                        //Mas se os Pontos atuais não for igual a o próximo então:
+                        } else {
+                            arrayNova.push(arrayTeste[j])
+                            j = 4;
+                        }
+ 
+
+                    } else {
+                        arrayNova.push(arrayTeste[j]);
+                        j = 4;
+                    }
+                }
+            }
+        }
+    }
+
+    return arrayNova
+
+}
+
+//Alinhando Tabela
+const colocacaoNaTabela = (arrayDosTimes) => {
+
+    for (let i = 0; i < arrayDosTimes.length; i++) {
+        let grupo = arrayDosTimes[i].pop();
+        arrayDosTimes[i] = maiorRetorna(arrayDosTimes[i]);
+        arrayDosTimes[i].push(grupo);
+    }
+    
+    return arrayDosTimes;
+}
+
+//Setando V - Vitórias, E - Empates, D - Derrotas e SG - Saldo de Gols
+const vEDSG = (esquerda, direita, primeiro, i, j) => {
+    
+    //Time 1
+    if(primeiro){
+        if(esquerda > direita){
+            arrayDosTimes[i][j][2] += 1; //V - Vitória
+            arrayDosTimes[i][j][5] += esquerda - direita; //SG - Saldo de Gols
+            return arrayDosTimes;
+        } else if(esquerda === direita){
+            arrayDosTimes[i][j][3] += 1; //E - Empate
+            arrayDosTimes[i][j][5] += esquerda - direita; //SG - Saldo de Gols
+            return arrayDosTimes;
+        } else {
+            arrayDosTimes[i][j][4] += 1; //D - Derrota
+            arrayDosTimes[i][j][5] += esquerda - direita; //SG - Saldo de Gols
+            return arrayDosTimes;
+        }
+    
+    //Time 2
+    } else {
+        if(esquerda < direita){
+            arrayDosTimes[i][j][2] += 1; //V - Vitória
+            arrayDosTimes[i][j][5] += direita - esquerda; //SG - Saldo de Gols
+            return arrayDosTimes;
+        } else if(esquerda === direita){
+            arrayDosTimes[i][j][3] += 1; //E - Empate
+            arrayDosTimes[i][j][5] += direita - esquerda; //SG - Saldo de Gols
+            return arrayDosTimes;
+        } else {
+            arrayDosTimes[i][j][4] += 1; //D - Derrota
+            arrayDosTimes[i][j][5] += direita - esquerda; //SG - Saldo de Gols
+            return arrayDosTimes;
+        }
+    }
+
+}
+
+//Tratando a array arrayDosTimes
+const tratandoArrayDosTimes = (lista, listaKey) => {
+    //Items dentro da lista
+    let valoresKey = Object.keys(lista[listaKey]);
+
+    //Grupo dentro da array arrayDosTimes
+    for (let i = 0; i < arrayDosTimes.length; i++) {
+
+        //times dentro de cada grupo
+        for (let j = 0; j < arrayDosTimes[i].length; j++) {
+
+            //Pontuar o time 1
+            if(arrayDosTimes[i][j][1] === lista[listaKey][valoresKey[2]]){
+                vEDSG(lista[listaKey][valoresKey[0]], lista[listaKey][valoresKey[1]], true, i, j);
+                
+            //Pontuar o time 2
+            }else if (arrayDosTimes[i][j][1] === lista[listaKey][valoresKey[3]])
+                vEDSG(lista[listaKey][valoresKey[0]], lista[listaKey][valoresKey[1]], false, i, j);
+        }
+    }
+
+    return arrayDosTimes;
+}
+
+//Tratando o Objeto JogosPassados
+const pontuar = () => {
+    
+    //Para cada Dia de Jogo dentro do Objeto JogosPassados faça:
+    for (const dataDosJogos in JogosPassados) {
+        for (const jogo in JogosPassados[dataDosJogos]) {
+            tratandoArrayDosTimes(JogosPassados[dataDosJogos], jogo);
+
+        }
+    }
+    colocacaoNaTabela(arrayDosTimes);
+
+    return arrayDosTimes;
+}
+
+//Criações
 // Criação de Cards - Fase de Grupos
 const criarFaseDeGrupos = (cont, main = mainHTML) => {
     let delay = 0;
@@ -179,14 +458,17 @@ const criarFaseDeGrupos = (cont, main = mainHTML) => {
 }
 
 // Criação de Cards - Tabela de Pontos Fase de grupo
-const criarTabelaDeGrupos = (cont, main = mainHTML) => {
+const criarTabelaDeGrupos = (main = mainHTML) => {
+    //Chama a funçao pontuar() para setar os pontos
+    pontuar(arrayDosTimes);
+
     main.innerHTML = "";
-    cont = 0;
-    for (const grupo in Grupos) {
+    for (let i = 0; i < arrayDosTimes.length; i++) {
+
         // Adicionando uma Card para cada grupo dentro do objeto Grupos
         main.innerHTML += `
             <div class="card grid-container" id="tabela">
-                <div class="grupo grid-row">${Grupos[grupo].nome}</div>
+                <div class="grupo grid-row">${arrayDosTimes[i][4]}</div>
     
                 <div class="grid-row titulos">
                     <div class="grid-item titulo-equipe">
@@ -214,32 +496,30 @@ const criarTabelaDeGrupos = (cont, main = mainHTML) => {
             </div>
             `
     
-            let j = 1;
-    
-        for ( time in Grupos[grupo]) {
-            let timeDoGrupo = Grupos[grupo][time]
-    
-            if(time !== "nome" ){
-                main.children[cont].innerHTML +=`
+        for (let j = 0; j < arrayDosTimes[i].length; j++) {
+            let timeSelecionado = arrayDosTimes[i][j];
+
+            //Para não Pegar o Grupo dentro do array
+            if(j !== 4){
+
+                main.children[i].innerHTML +=`
                 <div class="grid-row times">
                     <div class="grid-item equipe">
-                        <p>${j}</p>
-                        <img alt="bandeira" src="./assets/bandeiras/icon-${timeDoGrupo.bnd}.svg">
-                        <p>${timeDoGrupo.nome}</p>
+                        <p>${j+1}</p>
+                        <img alt="bandeira" src="./assets/bandeiras/icon-${timeSelecionado[0]}.svg">
+                        <p>${timeSelecionado[1]}</p>
                     </div>
-                    <div class="grid-item">${(3*timeDoGrupo.v)+(timeDoGrupo.e)}</div>
-                    <div class="grid-item">${(timeDoGrupo.v)+(timeDoGrupo.e)+(timeDoGrupo.d)}</div>
-                    <div class="grid-item">${timeDoGrupo.v}</div>
-                    <div class="grid-item">${timeDoGrupo.e}</div>
-                    <div class="grid-item">${timeDoGrupo.d}</div>
-                    <div class="grid-item">${timeDoGrupo.sg}</div>
+                    <div class="grid-item">${(timeSelecionado[2]*3) + (timeSelecionado[3])}</div>
+                    <div class="grid-item">${timeSelecionado[2] + timeSelecionado[3] + timeSelecionado[4]}</div>
+                    <div class="grid-item">${timeSelecionado[2]}</div>
+                    <div class="grid-item">${timeSelecionado[3]}</div>
+                    <div class="grid-item">${timeSelecionado[4]}</div>
+                    <div class="grid-item">${timeSelecionado[5]}</div>
                 </div>
                 `
-                j++
             }
         }
-        cont++
-    };
+    }
 }
 
 // Tratando o SELECT
@@ -907,290 +1187,6 @@ const Jogos = {
     }
 };
 
-// Grupos da Copa do mundo
-const Grupos = {
-    grupo_a:{
-        T1:{
-            bnd: "catar",
-            nome: "Catar",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T2:{ 
-            bnd: "equador",
-            nome: "Equador",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T3:{
-            bnd: "senegal",
-            nome: "Senegal",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T4:{
-            bnd: "holanda",
-            nome: "Holanda",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        nome: "Grupo A"
-    },
-    grupo_b:{
-        T1: {
-            bnd: "inglaterra",
-            nome: "Inglaterra",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T2: {
-            bnd: "ira",
-            nome: "Irã",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T3: {
-            bnd: "estados-unidos",
-            nome: "EUA",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T4: {
-            bnd: "pais-de-gales",
-            nome: "Gales",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        nome: "Grupo B"
-    },
-    grupo_c:{
-        T1: {
-            bnd: "argentina",
-            nome: "Argentina",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T2: {
-            bnd: "arabia-saudita",
-            nome: "Arábia S.",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T3: {
-            bnd: "mexico",
-            nome: "México",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T4: {
-            bnd: "polonia",
-            nome: "Polônia",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        nome: "Grupo C"
-    },
-    grupo_d:{
-        T1: {
-            bnd: "franca",
-            nome: "França",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T2: {
-            bnd: "australia",
-            nome: "Austrália",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T3: {
-            bnd: "dinamarca",
-            nome: "Dinamarca",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T4: {
-            bnd: "tunisia",
-            nome: "Tunísia",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        nome: "Grupo D"
-    },
-    grupo_e:{
-        T1: {
-            bnd: "espanha",
-            nome: "Espanha",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T2: {
-            bnd: "costa-rica",
-            nome: "Costa Rica",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T3: {
-            bnd: "alemanha",
-            nome: "Alemanha",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T4: {
-            bnd: "japao",
-            nome: "Japão",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        nome: "Grupo E"
-    },
-    grupo_f:{
-        T1: {
-            bnd: "belgica",
-            nome: "Bélgica",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T2: {
-            bnd: "canada",
-            nome: "Canadá",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T3: {
-            bnd: "marrocos",
-            nome: "Marrocos",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T4: {
-            bnd: "croacia",
-            nome: "Croácia",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        nome: "Grupo F"
-    },
-    grupo_g:{
-        T1: {
-            bnd: "brasil",
-            nome: "Brasil",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T2: {
-            bnd: "servia",
-            nome: "Sérvia",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T3: {
-            bnd: "suica",
-            nome: "Suiça",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T4: {
-            bnd: "camaroes",
-            nome: "Camarões",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        nome: "Grupo G"
-    },
-    grupo_h:{
-        T1: {
-            bnd: "portugal",
-            nome: "Portugal",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T2: {
-            bnd: "gana",
-            nome: "Gana",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T3: {
-            bnd: "uruguai",
-            nome: "Uruguai",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        T4: {
-            bnd: "coreia-do-sul",
-            nome: "Coréia do Sul",
-            v: 0,
-            e: 0,
-            d: 0,
-            sg: 0
-        },
-        nome: "Grupo H"
-    }
-};
-
 // Objeto com as chamadas de tela
 const Telas = {
     faseDeGrupos: criarFaseDeGrupos,
@@ -1206,125 +1202,303 @@ const JogosPassados = {
     dia_20_11: {
         jogo1: {
             catar: 0,
-            equador: 2
+            equador: 2,
+            nome1: "Catar",
+            nome2: "Equador"
         }
     },
     dia_21_11: {
         jogo1: {
             inglaterra: 6,
-            ira: 2
+            ira: 2,
+            nome1: "Inglaterra",
+            nome2: "Irã"
         },
         jogo2: {
             senegal: 0,
-            holanda: 2
+            holanda: 2,
+            nome1: "Senegal",
+            nome2: "Holanda"
         },
         jogo3: {
             estadosUnidos: 1,
-            paisDeGales: 1
+            paisDeGales: 1,
+            nome1: "EUA",
+            nome2: "Gales"
         }
     },
     dia_22_11: {
         jogo1: {
             argentina: 1,
-            arabiaSaudita: 2
+            arabiaSaudita: 2,
+            nome1: "Argentina",
+            nome2: "Arábia S."
         },
         jogo2: {
             dinamarca: 0,
-            tunisia: 0
+            tunisia: 0,
+            nome1: "Dinamarca",
+            nome2: "Tunísia"
         },
         jogo3: {
             mexico: 0,
-            polonia: 0
+            polonia: 0,
+            nome1: "México",
+            nome2: "Polônia"
         },
         jogo4: {
             franca: 4,
-            australia: 1
+            australia: 1,
+            nome1: "França",
+            nome2: "Austrália"
         }
     },
     dia_23_11: {
         jogo1:{
             marrocos: 0,
-            croacia: 0
+            croacia: 0,
+            nome1: "Marrocos",
+            nome2: "Croácia"
         },
         jogo2:{
             alemanha: 1,
-            japao: 2
+            japao: 2,
+            nome1: "Alemanha",
+            nome2: "Japão"
         },
         jogo3:{
             espanha: 7,
-            costaRica: 0
+            costaRica: 0,
+            nome1: "Espanha",
+            nome2: "Costa Rica"
         },
         jogo4: {
             belgica: 1,
-            canada: 0
+            canada: 0,
+            nome1: "Bélgica",
+            nome2: "Canadá"
         }
     },
     dia_24_11:{
         jogo1:{
             suica: 1,
-            camaroes: 0
+            camaroes: 0,
+            nome1: "Suiça",
+            nome2: "Camarões"
         },
         jogo2:{
             uruguai: 0,
-            coreiaDoSul: 0
+            coreiaDoSul: 0,
+            nome1: "Uruguai",
+            nome2: "Coréia do Sul"
         },
         jogo3:{
             portugal: 3,
-            gana: 2
+            gana: 2,
+            nome1: "Portugal",
+            nome2: "Gana"
         },
         jogo4:{
             brasil: 2,
-            servia: 0
+            servia: 0,
+            nome1: "Brasil",
+            nome2: "Sérvia"
         }
     },
     dia_25_11:{
         jogo1:{
             paisDeGales: 0,
-            ira: 2
+            ira: 2,
+            nome1: "Gales",
+            nome2: "Irã"
         },
         jogo2:{
             catar: 1,
-            senegal: 3
+            senegal: 3,
+            nome1: "Catar",
+            nome2: "Senegal"
         },
         jogo3: {
             holanda: 1,
-            equador: 1
+            equador: 1,
+            nome1: "Holanda",
+            nome2: "Equador"
         },
         jogo4:{
             inglaterra: 0,
-            estadosUnidos: 0
+            estadosUnidos: 0,
+            nome1: "Inglaterra",
+            nome2: "EUA"
         }
     },
     dia_26_11:{
         jogo1:{
             tunisisa: 0,
-            australia: 1
+            australia: 1,
+            nome1: "Tunísia",
+            nome2: "Austrália"
         },
         jogo2:{
             polonia: 2,
-            arabiaSaudita: 0
+            arabiaSaudita: 0,
+            nome1: "Polônia",
+            nome2: "Arábia S."
         },
         jogo3:{
             franca: 2,
-            dinamarca: 1
+            dinamarca: 1,
+            nome1: "França",
+            nome2: "Dinamarca"
         },
         jogo4:{
             argentina: 2,
-            mexico: 0
+            mexico: 0,
+            nome1: "Argentina",
+            nome2: "México"
         }
     },
     dia_27_11:{
         jogo1:{
             japao: 0,
-            costaRica: 1
+            costaRica: 1,
+            nome1: "Japão",
+            nome2: "Costa Rica"
         },
         jogo2:{
             belgica: 0,
-            marrocos: 1
+            marrocos: 2,
+            nome1: "Bélgica",
+            nome2: "Marrocos"
         },
         jogo3:{
             croacia: 4,
-            canada: 1
+            canada: 1,
+            nome1: "Croácia",
+            nome2: "Canadá"
+        },
+        jogo4:{
+            espanha: 1,
+            alemanha: 1,
+            nome1: "Espanha",
+            nome2: "Alemanha"
+        }
+    },
+    dia_28_11:{
+        jogo1:{
+            camaroes: 3,
+            servia: 3,
+            nome1: "Camarões",
+            nome2: "Sérvia"
+        },
+        jogo2:{
+            coreiaDoSul: 2,
+            gana: 3,
+            nome1: "Coréia do Sul",
+            nome2: "Gana"
+        },
+        jogo3:{
+            brasil: 1,
+            suica: 0,
+            nome1: "Brasil",
+            nome2: "Suiça"
+        },
+        jogo4:{
+            portugal: 2,
+            uruguai: 0,
+            nome1: "Portugal",
+            nome2: "Uruguai"
+        }
+    },
+    dia_29_11:{
+        jogo1:{
+            holanda: 2,
+            catar: 0,
+            nome1: "Holanda",
+            nome2: "Catar"
+        },
+        jogo2:{
+            equador: 1,
+            senegal: 2,
+            nome1: "Equador",
+            nome2: "Senegal"
+        },
+        jogo3:{
+            ira: 0,
+            estadosUnidos: 1,
+            nome1: "Irã",
+            nome2: "EUA"
+        },
+        jogo4:{
+            paisDeGales: 0,
+            inglaterra: 3,
+            nome1: "Gales",
+            nome2: "Inglaterra"
+        }
+    },
+    dia_30_11:{
+        jogo1:{
+            tunisia: 1,
+            franca: 0,
+            nome1: "Tunísia",
+            nome2: "França"
+        },
+        jogo2:{
+            australia: 1,
+            dinamarca: 0,
+            nome1: "Austrália",
+            nome2: "Dinamarca"
+        },
+        jogo3:{
+            polonia: 0,
+            argentina: 2,
+            nome1: "Polônia",
+            nome2: "Argentina"
+        },
+        jogo4:{
+            arabiaSaudita: 1,
+            mexico: 2,
+            nome1: "Arábia S.",
+            nome2: "México"
+        }
+    },
+    dia_01_12:{
+        jogo1:{
+            croacia: 0,
+            belgica: 0,
+            nome1: "Croácia",
+            nome2: "Bélgica"
+        },
+        jogo2:{
+            canada: 1,
+            marrocos: 2,
+            nome1: "Canadá",
+            nome2: "Marrocos"
+        },
+        jogo3:{
+            japao: 2,
+            espanha: 1,
+            nome1: "Japão",
+            nome2: "Espanha"
+        },
+        jogo4:{
+            costaRica: 2,
+            alemanha: 4,
+            nome1: "Costa Rica",
+            nome2: "Alemanha"
+        }
+    },
+    dia_02_12:{
+        jogo1:{
+            coreiaDoSul: 2,
+            portugal: 1,
+            nome1: "Coréia do Sul",
+            nome2: "Portugal"
+        },
+        jogo2:{
+            gana: 0,
+            uruguai: 2,
+            nome1: "Gana",
+            nome2: "Uruguai"
         }
     }
 }
@@ -1344,12 +1518,6 @@ for (let i = 0; i < bandeiras.length; i++) {
     bandeiras[i].addEventListener("mouseover", ouvindoBandeiras);
     bandeiras[i].addEventListener("mouseout", esconderNomeBandeiras);
 };
-
-
-
-
-
-
 
 
 
