@@ -51,7 +51,7 @@ body{
 
 div#app{
     margin: 51px 20px;
-    
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,7 +96,7 @@ div.card h2 {
     padding: 8px 16px;
     width: fit-content;
     margin: auto;
-    margin-bottom: 53px;
+    margin-bottom: 52px;
     
     color: #F7DD43;
     
@@ -203,6 +203,7 @@ div.horaPlacar strong.aguarde{
 }
 
 
+
 /* Estilo Tabela */
 div.grid-container{
     display: grid;
@@ -301,21 +302,60 @@ div#oitavas{
 }
 
 div#oitavas div.card{
-    width: 45%;
+    width: 420px;
 
-    /* margin: 20px; */
+    margin: 20px;
 }
 
 div#oitavas div.card li{
     display: flex;
-    flex-wrap: wrap;
+    
+    justify-content: space-around;
+    align-items: center;
+}
+
+div#oitavas li div.bandeira{
+    display: flex;
 
     justify-content: space-around;
     align-items: center;
 }
 
+div#oitavas div.card h2 {
+    margin-bottom: 32px;
+}
+
 
 /* Media querrys */
+@media (max-width: 650px) {
+    body{
+        height: auto;
+    }
+
+    /* Tabela */
+    div.grid-container{
+        width: 100%;
+    }
+
+    div.titulos{
+        grid-template-columns: repeat(14, 8.2%);
+    }
+
+    main#cards div.titulos div.titulo-equipe{
+        grid-column-start: 1;
+        grid-column-end: 7;
+    }
+    
+    main#cards div.times{
+        grid-template-columns: repeat(14, 8.2%);
+    }
+
+    main#cards div.times div.equipe{
+        grid-column-start: 1;
+        grid-column-end: 7;
+    }
+}
+
 @media (min-width: 680px) {
     body{
         height: auto;
@@ -327,10 +367,6 @@ div#oitavas div.card li{
         height: auto;
         background-position-x: 0%;
         background-position-y: 50%;
-    }
-
-    #cards{
-        max-width: 1012px;
     }
 }
 

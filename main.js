@@ -378,9 +378,13 @@ const pontuar = () => {
     
     //Para cada Dia de Jogo dentro do Objeto JogosPassados faça:
     for (const dataDosJogos in JogosPassados) {
-        for (const jogo in JogosPassados[dataDosJogos]) {
-            tratandoArrayDosTimes(JogosPassados[dataDosJogos], jogo);
+        if(dataDosJogos == "oitavas"){
 
+        } else {
+            for (const jogo in JogosPassados[dataDosJogos]) {
+                tratandoArrayDosTimes(JogosPassados[dataDosJogos], jogo);
+    
+            }
         }
     }
     colocacaoNaTabela(arrayDosTimes);
@@ -396,7 +400,7 @@ const setandoArrayOitavas = (arrayOitavas) => {
     for (let i = 0; i < arrayDosTimes.length; i++) {
         classificados.push([arrayDosTimes[i][0], arrayDosTimes[i][1]])
     }
-    
+    console.log(classificados);
     //Setando Jogos na arrayOitavas
     for (let i = 0; i < classificados.length; i++) {
         arrayOitavas.push([classificados[i][0] , classificados[i+1][1]])
@@ -1602,6 +1606,96 @@ const JogosPassados = {
             nome1: "Camarões",
             nome2: "Brasil"
         }
+    },
+    oitavas: {
+        dia_03_12:{
+            jogo1:{
+                holanda: "-",
+                estadosUnidos: "-",
+                nome1: "Holanda",
+                nome2: "EUA",
+                penaltis: {
+                    j1: "-",
+                    j2: "-"
+                }
+            },
+            jogo2:{
+                argentina: "-",
+                australia: "-",
+                nome1: "Argentina",
+                nome2: "Austrália",
+                penaltis: {
+                    j1: "-",
+                    j2: "-"
+                }
+            },
+        },
+        dia_04_12:{
+            jogo1:{
+                inglaterra: "-",
+                senegal: "-",
+                nome1: "Inglaterra",
+                nome2: "Senegal",
+                penaltis: {
+                    j1: "-",
+                    j2: "-"
+                }
+            },
+            jogo2:{
+                franca: "-",
+                polonia: "-",
+                nome1: "França",
+                nome2: "Polônia",
+                penaltis: {
+                    j1: "-",
+                    j2: "-"
+                }
+            },
+        },
+        dia_05_12:{
+            jogo1:{
+                japao: "-",
+                croacia: "-",
+                nome1: "Japão",
+                nome2: "Croácia",
+                penaltis: {
+                    j1: "-",
+                    j2: "-"
+                }
+            },
+            jogo2:{
+                brasil: "-",
+                coreiaDoSul: "-",
+                nome1: "Brasil",
+                nome2: "Coréia do Sul",
+                penaltis: {
+                    j1: "-",
+                    j2: "-"
+                }
+            },
+        },
+        dia_06_12:{
+            jogo1:{
+                marrocos: "-",
+                espanha: "-",
+                nome1: "Marrocos",
+                nome2: "Espanha",
+                penaltis: {
+                    j1: "-",
+                    j2: "-"
+                }
+            },
+            jogo2:{
+                portugal: "-",
+                suica: "-",
+                nome1: "Portugal",
+                nome2: "Suiça",
+                penaltis: {
+                    j1: "-",
+                    j2: "-"
+                }
+            },
+        }
     }
 }
 
@@ -1621,7 +1715,7 @@ setandoArrayOitavas(arrayOitavas);
 
 
 // Iniciar a tela com Fase de Grupo
-Telas.oitavasDeFinal();
+Telas.tabela();
 
 
 
