@@ -338,21 +338,21 @@ div#oitavas div.card h2 {
     }
 
     div.titulos{
-        grid-template-columns: repeat(14, 8.2%);
+        grid-template-columns: repeat(11, 10%);
     }
 
     main#cards div.titulos div.titulo-equipe{
         grid-column-start: 1;
-        grid-column-end: 7;
+        grid-column-end: 5;
     }
     
     main#cards div.times{
-        grid-template-columns: repeat(14, 8.2%);
+        grid-template-columns: repeat(11, 10%);
     }
 
     main#cards div.times div.equipe{
         grid-column-start: 1;
-        grid-column-end: 7;
+        grid-column-end: 5;
     }
 }
 
