@@ -5,6 +5,9 @@ let body = document.getElementsByTagName('body');
 let select = document.getElementById('categoria');
 let data = new Date();
 
+//Array das Oitavas
+let arrayOitavas = [];
+
 //Array dos times
 let arrayDosTimes = [
     [
@@ -66,24 +69,6 @@ let arrayDosTimes = [
     ]
 ];
 
-let arrayTeste = [
-    ['brasil', 'Brasil', 2,
-    0,
-    0,
-    3],
-    ['servia', 'Sérvia', 2,
-    0,
-    0,
-    3],
-    ['suica', 'Suiça', 1,
-    0,
-    1,
-    0],
-    ['camaroes', 'Camarões', 0,
-    1,
-    1,
-    -2],
-];
 
 
 // Funções
@@ -94,6 +79,8 @@ const ouvindoBandeiras = (e) => {
     let p = e.target.parentElement.children[1];
     
     strong.style.visibility = "visible";
+    strong.style.transform = "none";
+    strong.style.transition = "unset";
     
     img.style.transform = "scale(1.2)";
     img.style.marginTop = "-30px";
@@ -206,20 +193,20 @@ const esconderNomeBandeiras = (e) => {
 };
 
 //Se for maior retorna
-const maiorRetorna = (arrayTeste) => {
+const maiorRetorna = (arrayGrupo) => {
     let pontos = [];
     let arrayNova = [];
     let arrayHaIgual = [];
 
-    //Se arrayTeste ainda possuir grupo, mesmo retirando antes
-    // window.alert("Entrando: " + arrayTeste)
-    if (arrayTeste.length > 4) {
-        arrayTeste.pop();
+    //Se arrayGrupo ainda possuir grupo, mesmo retirando antes
+    // window.alert("Entrando: " + arrayGrupo)
+    if (arrayGrupo.length > 4) {
+        arrayGrupo.pop();
     }
 
     //Setando os Pontos que ficaram dentro do array pontos
-    for (let i = 0; i < arrayTeste.length; i++) {
-        pontos.push((arrayTeste[i][2]*3) + arrayTeste[i][3]);
+    for (let i = 0; i < arrayGrupo.length; i++) {
+        pontos.push((arrayGrupo[i][2]*3) + arrayGrupo[i][3]);
     }
 
     //Ajustado os número da array em ordem crescente
@@ -228,14 +215,14 @@ const maiorRetorna = (arrayTeste) => {
     pontos.reverse();
     
     //Cada ponto dentro do array Pontos faça
-    for (let i = 0; i < arrayTeste.length; i++) {
+    for (let i = 0; i < arrayGrupo.length; i++) {
         let repete = 0;
 
-        //Para cada pontos dentro do time dentro da arrayTeste faça
-        for (let j = 0; j < arrayTeste.length; j++) {
+        //Para cada pontos dentro do time dentro da arrayGrupo faça
+        for (let j = 0; j < arrayGrupo.length; j++) {
 
             //Se pontos for igual soma ao repete (sempre vai ser 1 pelo menos).
-            if (pontos[i] === (arrayTeste[j][2]*3) + arrayTeste[j][3]) {
+            if (pontos[i] === (arrayGrupo[j][2]*3) + arrayGrupo[j][3]) {
                 repete += 1; 
             }
         }
@@ -251,13 +238,13 @@ const maiorRetorna = (arrayTeste) => {
     }
 
     //Para cada ponto dento do array pontos faça:
-    for (let i = 0; i < arrayTeste.length; i++) {
+    for (let i = 0; i < arrayGrupo.length; i++) {
 
-        //Para cada time dentro da arrayTeste faça
-        for (let j = 0; j < arrayTeste.length; j++) {
+        //Para cada time dentro da arrayGrupo faça
+        for (let j = 0; j < arrayGrupo.length; j++) {
 
             //Se o ponto atual for igual aos pontos do time atual faça:
-            if(pontos[i] === (arrayTeste[j][2]*3) + arrayTeste[j][3]){
+            if(pontos[i] === (arrayGrupo[j][2]*3) + arrayGrupo[j][3]){
 
                 //Variável criada para ver se o arrayNova já possui o time passado.
                 let jaPossui = false;
@@ -266,7 +253,7 @@ const maiorRetorna = (arrayTeste) => {
                 for (let k = 0; k < arrayNova.length; k++) {
                     
                     //Se o nome do time atual for encontrado dentro da arrayNova faça:
-                    if (arrayTeste[j][1] === arrayNova[k][1]) {
+                    if (arrayGrupo[j][1] === arrayNova[k][1]) {
                         //a variável recebe true para não adicionar o time na arrayNova
                         jaPossui = true;
                     }
@@ -277,30 +264,30 @@ const maiorRetorna = (arrayTeste) => {
                 if (jaPossui === false && arrayNova.length < 4) {
 
                     //Os pontos do indice atual se repete?
-                    if(arrayHaIgual[i] && arrayHaIgual[i+1] && arrayTeste[j+1] !== undefined){
+                    if(arrayHaIgual[i] && arrayHaIgual[i+1] && arrayGrupo[j+1] !== undefined){
                         
                         // Se os Pontos atuais for igual a o próximo faça
-                        if((arrayTeste[j][2]*3) + arrayTeste[j][3] === (arrayTeste[j+1][2]*3) + arrayTeste[j+1][3]){
+                        if((arrayGrupo[j][2]*3) + arrayGrupo[j][3] === (arrayGrupo[j+1][2]*3) + arrayGrupo[j+1][3]){
                             //Se o SG(Saldo de Gols) atual for maior que SG do próximo adiciona o atual e depois o próximo, se não adicione o próximo e depois o atual.
-                            if(arrayTeste[j][5] > arrayTeste[j+1][5]){
-                                arrayNova.push(arrayTeste[j])
+                            if(arrayGrupo[j][5] > arrayGrupo[j+1][5]){
+                                arrayNova.push(arrayGrupo[j])
                                 j = 4;
                                 
                             } else {
-                                arrayNova.push(arrayTeste[j+1])
-                                arrayNova.push(arrayTeste[j])
+                                arrayNova.push(arrayGrupo[j+1])
+                                arrayNova.push(arrayGrupo[j])
                                 j = 4;
                             }
                         
                         //Mas se os Pontos atuais não for igual a o próximo então:
                         } else {
-                            arrayNova.push(arrayTeste[j])
+                            arrayNova.push(arrayGrupo[j])
                             j = 4;
                         }
  
 
                     } else {
-                        arrayNova.push(arrayTeste[j]);
+                        arrayNova.push(arrayGrupo[j]);
                         j = 4;
                     }
                 }
@@ -401,6 +388,27 @@ const pontuar = () => {
     return arrayDosTimes;
 }
 
+const setandoArrayOitavas = (arrayOitavas) => {
+    //Criação de arrays
+    let classificados = [];
+
+    //Setando times na array classificadaos
+    for (let i = 0; i < arrayDosTimes.length; i++) {
+        classificados.push([arrayDosTimes[i][0], arrayDosTimes[i][1]])
+    }
+    
+    //Setando Jogos na arrayOitavas
+    for (let i = 0; i < classificados.length; i++) {
+        arrayOitavas.push([classificados[i][0] , classificados[i+1][1]])
+        arrayOitavas.push([classificados[i+1][0] , classificados[i][1]])
+        i++
+    }
+
+    return arrayOitavas
+}
+
+
+
 //Criações
 // Criação de Cards - Fase de Grupos
 const criarFaseDeGrupos = (cont, main = mainHTML) => {
@@ -454,14 +462,17 @@ const criarFaseDeGrupos = (cont, main = mainHTML) => {
         cont++
         delay += 0.3;
     };
+
+    // Efeito das bandeiras ao passar o mouse
+    for (let i = 0; i < bandeiras.length; i++) {
+        bandeiras[i].addEventListener("mouseover", ouvindoBandeiras);
+        bandeiras[i].addEventListener("mouseout", esconderNomeBandeiras);
+    };
     
 }
 
 // Criação de Cards - Tabela de Pontos Fase de grupo
 const criarTabelaDeGrupos = (main = mainHTML) => {
-    //Chama a funçao pontuar() para setar os pontos
-    pontuar(arrayDosTimes);
-
     main.innerHTML = "";
     for (let i = 0; i < arrayDosTimes.length; i++) {
 
@@ -522,10 +533,88 @@ const criarTabelaDeGrupos = (main = mainHTML) => {
     }
 }
 
+//Criação de cards - Oitavas de Final
+const criarOitavasDeFinal = (array = arrayDosTimes, main = mainHTML) => {
+    let horários = [
+        ["Oitavas 1", "03/12", "Sábado", "12:00"],
+        ["Oitavas 2", "03/12", "Sábado", "16:00"],
+        ["Oitavas 3", "05/12", "Segunda", "12:00"],
+        ["Oitavas 4", "05/12", "Segunda", "16:00"],
+        ["Oitavas 5", "04/12", "Domingo", "12:00"],
+        ["Oitavas 6", "04/12", "Domingo", "16:00"],
+        ["Oitavas 7", "06/12", "Terça", "12:00"],
+        ["Oitavas 8", "06/12", "Terça", "16:00"],
+    ]
+
+    //Esvazia a tela
+    main.innerHTML = `<div id="oitavas"></div>`;
+    let j = 0;
+
+    for (let i = 0; i < arrayOitavas.length; i++) {
+        if(i%2 === 0){
+            main.children[0].innerHTML += `
+                <div class="card">
+                    <h2>${horários[j][1]} <span>${horários[j][2]}</span></h2>
+                    <li>
+                        <div class="bandeira">
+                            <img src="./assets/bandeiras/icon-${arrayOitavas[i][0][0]}.svg" alt="Bandeira do ${arrayOitavas[i][0][1]}">
+                            <p>${arrayOitavas[i][0][1]}</p>
+                        </div>
+
+                        <div class="horaPlacar">
+                            <strong class="hora">${horários[j][3]}</strong> 
+                        </div>
+
+                        <div class="bandeira">
+                            <img src="./assets/bandeiras/icon-${arrayOitavas[i][1][0]}.svg" alt="Bandeira do ${arrayOitavas[i][1][1]}">
+                            <p>${arrayOitavas[i][1][1]}</p>
+                        </div>
+                    </li>
+                <div>
+            `
+            j++
+        }
+    }
+
+    
+    for (let i = 0; i < arrayOitavas.length; i++) {
+        if(i%2 === 1){
+            main.children[0].innerHTML += `
+                <div class="card">
+                    <h2>${horários[j][1]} <span>${horários[j][2]}</span></h2>
+                    <li>
+                        <div class="bandeira">
+                            <img src="./assets/bandeiras/icon-${arrayOitavas[i][0][0]}.svg" alt="Bandeira do ${arrayOitavas[i][0][1]}">
+                            <p>${arrayOitavas[i][0][1]}</p>
+                        </div>
+
+                        <div class="horaPlacar">
+                            <strong class="hora">${horários[j][3]}</strong> 
+                        </div>
+
+                        <div class="bandeira">
+                            <img src="./assets/bandeiras/icon-${arrayOitavas[i][1][0]}.svg" alt="Bandeira do ${arrayOitavas[i][1][1]}">
+                            <p>${arrayOitavas[i][1][1]}</p>
+                        </div>
+                    </li>
+                <div>
+            `
+            j++
+        }
+    }
+
+    // Efeito das bandeiras ao passar o mouse
+    for (let i = 0; i < bandeiras.length; i++) {
+        bandeiras[i].addEventListener("mouseover", ouvindoBandeiras);
+        bandeiras[i].addEventListener("mouseout", esconderNomeBandeiras);
+    };
+}
+
 // Tratando o SELECT
 function chamandoTela() {
     Telas[select.value]();
 }
+
 
 
 // Objetos
@@ -1191,6 +1280,7 @@ const Jogos = {
 const Telas = {
     faseDeGrupos: criarFaseDeGrupos,
     tabela: criarTabelaDeGrupos,
+    oitavasDeFinal: criarOitavasDeFinal,
     // quartasDeFinal: ,
     // semifinal: ,
     // terceiroColocado: ,
@@ -1499,28 +1589,39 @@ const JogosPassados = {
             uruguai: 2,
             nome1: "Gana",
             nome2: "Uruguai"
+        },
+        jogo3:{
+            servia: 2,
+            suica: 3,
+            nome1: "Sérvia",
+            nome2: "Suiça"
+        },
+        jogo4:{
+            camaroes: 1,
+            brasil: 0,
+            nome1: "Camarões",
+            nome2: "Brasil"
         }
     }
 }
 
 
+
 // Event Listener
 // Ouvindo as mudanças do SELECT
-select.addEventListener('change' , chamandoTela)        
+select.addEventListener('change' , chamandoTela);
+
+
+
+//Chama a funçao pontuar() para setar os pontos
+pontuar(arrayDosTimes);
+//Chama a funçao setandoArrayOitavas() para setar os pontos
+setandoArrayOitavas(arrayOitavas);
+
 
 
 // Iniciar a tela com Fase de Grupo
-Telas.faseDeGrupos();
-
-
-// Efeito das bandeiras ao passar o mouse
-for (let i = 0; i < bandeiras.length; i++) {
-    bandeiras[i].addEventListener("mouseover", ouvindoBandeiras);
-    bandeiras[i].addEventListener("mouseout", esconderNomeBandeiras);
-};
-
-
-
+Telas.oitavasDeFinal();
 
 
 

@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 
-ul{
+ul, ul li, li{
     list-style: none;
 }
 
@@ -15,7 +15,7 @@ body{
     background-position-y: 50%;
     
     font-family: 'Roboto', sans-serif;
-    height: 7300px;
+    width: 100%;
 }
 
 div#app{
@@ -74,7 +74,6 @@ div.card h2 span{
     
     font-size: 14px;
     text-transform: uppercase;
-    
 }
 
 div.card ul{
@@ -100,7 +99,8 @@ div.card ul li + li{
     padding-top: 24px;
 }
 
-div.card ul li strong{
+div.card ul li strong ,
+div.card li strong.hora{
     font-weight: 900;
     font-size: 36px;
     line-height: 125%;
@@ -258,6 +258,27 @@ div.times div.equipe img{
     width: 25px;
 }
 
+
+/* Oitavas */
+div#oitavas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+div#oitavas div.card{
+    width: 45%;
+
+    /* margin: 20px; */
+}
+
+div#oitavas div.card li{
+    display: flex;
+    flex-wrap: wrap;
+
+    justify-content: space-around;
+    align-items: center;
+}
 
 
 /* Media querrys */
