@@ -8,6 +8,12 @@ let data = new Date();
 //Array das Oitavas
 let arrayOitavas = [];
 
+//Array das Quartas
+let arrayQuartas = [];
+
+//Array das Semi
+let arraySemiFinal = [];
+
 //Array dos times
 let arrayDosTimes = [
     [
@@ -400,7 +406,7 @@ const setandoArrayOitavas = (arrayOitavas) => {
     for (let i = 0; i < arrayDosTimes.length; i++) {
         classificados.push([arrayDosTimes[i][0], arrayDosTimes[i][1]])
     }
-    console.log(classificados);
+
     //Setando Jogos na arrayOitavas
     for (let i = 0; i < classificados.length; i++) {
         arrayOitavas.push([classificados[i][0] , classificados[i+1][1]])
@@ -612,6 +618,50 @@ const criarOitavasDeFinal = (array = arrayDosTimes, main = mainHTML) => {
         bandeiras[i].addEventListener("mouseover", ouvindoBandeiras);
         bandeiras[i].addEventListener("mouseout", esconderNomeBandeiras);
     };
+
+    for (const dataJogos in JogosPassados.oitavas) {
+        
+        
+        
+        if (data.getDate() >= Number(dataJogos.split("_")[1])
+        && (data.getMonth())+1 === Number(dataJogos.split("_")[2])
+        || (data.getMonth())+1 > Number(dataJogos.split("_")[2])) {
+            let i = 0;
+            
+            for (const jogo in JogosPassados.oitavas[dataJogos]) {
+                let divPlacar = main.children[0].children[i].children[1].children[1];
+                let time = Object.keys(JogosPassados.oitavas[dataJogos][jogo]);
+                console.log(JogosPassados.oitavas[dataJogos][jogo][time[4]].j1);
+                if(JogosPassados.oitavas[dataJogos][jogo][time[0]] === JogosPassados.oitavas[dataJogos][jogo][time[1]]){
+                    divPlacar.innerHTML = `
+                        <strong class="tituloPlacar">Placar</strong>
+                        <div class="placar">
+                            <p>
+                                ${JogosPassados.oitavas[dataJogos][jogo][time[0]]}
+                                <span>${JogosPassados.oitavas[dataJogos][jogo][time[4]].j1}</span>
+                            </p>
+                            <p>x</p>
+                            <p>
+                                ${JogosPassados.oitavas[dataJogos][jogo][time[1]]}
+                                <span>${JogosPassados.oitavas[dataJogos][jogo][time[4]].j2}</span>
+                            </p>
+                        </div>
+                    `
+                } else {
+                    divPlacar.innerHTML = `
+                        <strong class="tituloPlacar">Placar</strong>
+                        <div class="placar">
+                            <p>${JogosPassados.oitavas[dataJogos][jogo][time[0]]}</p>
+                            <p>x</p>
+                            <p>${JogosPassados.oitavas[dataJogos][jogo][time[1]]}</p>
+                        </div>
+                    `
+                }
+
+                i++
+            }
+        }
+    }
 }
 
 // Tratando o SELECT
@@ -1610,8 +1660,8 @@ const JogosPassados = {
     oitavas: {
         dia_03_12:{
             jogo1:{
-                holanda: "-",
-                estadosUnidos: "-",
+                holanda: "3",
+                estadosUnidos: "1",
                 nome1: "Holanda",
                 nome2: "EUA",
                 penaltis: {
@@ -1620,8 +1670,8 @@ const JogosPassados = {
                 }
             },
             jogo2:{
-                argentina: "-",
-                australia: "-",
+                argentina: "2",
+                australia: "1",
                 nome1: "Argentina",
                 nome2: "Austrália",
                 penaltis: {
@@ -1715,18 +1765,7 @@ setandoArrayOitavas(arrayOitavas);
 
 
 // Iniciar a tela com Fase de Grupo
-Telas.tabela();
-
-
-
-
-
-
-
-
-
-
-
+Telas.oitavasDeFinal();
 
 
 

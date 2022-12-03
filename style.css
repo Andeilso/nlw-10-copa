@@ -325,6 +325,24 @@ div#oitavas div.card h2 {
     margin-bottom: 32px;
 }
 
+div#oitavas div.placar p:first-child span,
+div#oitavas div.placar p:nth-child(3) span{
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+
+    font-size: 17px;
+    background-color: #4e4e4e;
+    padding: 0px 6px;
+    border-radius: 10px;
+}
+
+div#oitavas div.placar p:nth-child(3) span{
+    left: unset;
+    right: 20px;
+}
+
+
 
 /* Media querrys */
 @media (max-width: 650px) {
