@@ -50,8 +50,11 @@ body{
 }
 
 div#app{
-    width: fit-content;
-    margin: 51px auto;
+    margin: 51px 20px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 header{
