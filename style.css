@@ -4,6 +4,37 @@
     box-sizing: border-box;
 }
 
+select,
+select option{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-decoration: none;
+}
+
+select {
+    padding: 20px;
+    border: 2px solid #F7DD43;
+    border-radius: 25px;
+    width: 100%;
+    margin-top: 50px;
+    background: url(./assets/expand.svg) no-repeat right;
+    background-color: #1D1C19;
+    color: white;
+
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    text-align: start;
+}
+
+select option{
+    font-size: 12px;
+    height: 20px;
+}
+
+
 ul, ul li, li{
     list-style: none;
 }
