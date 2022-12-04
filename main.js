@@ -1869,7 +1869,7 @@ const JogosPassados = {
         },
         dia_04_12:{
             jogo1:{
-                inglaterra: 2,
+                inglaterra: 3,
                 senegal: 0,
                 nome1: "Inglaterra",
                 nome2: "Senegal",
