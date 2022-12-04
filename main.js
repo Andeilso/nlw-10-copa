@@ -1969,7 +1969,7 @@ setandoArrayQuartas(arrayQuartas)
 
 
 // Iniciar a tela com Fase de Grupo
-Telas.quartasDeFinal();
+Telas.oitavasDeFinal();
 
 
 
