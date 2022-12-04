@@ -443,14 +443,17 @@ const setandoArrayQuartas = (arrayQuartas) => {
                         
                     }
                 
-                } else {
+                } else if (jogoAtual[dadosJogo[0]] < jogoAtual[dadosJogo[1]]){
                     classificados.push(jogoAtual[dadosJogo[3]])
     
                 }
+            } else if (jogoAtual[dadosJogo[0]] === "-"){
+                classificados.push(undefined);
             }
             i++
         }
     }
+    console.log(classificados);
 
     //Setando Jogos na arrayQuartas
     for (let i = 0; i < 8; i++) {
@@ -608,8 +611,8 @@ const criarOitavasDeFinal = (array = arrayDosTimes, main = mainHTML) => {
         ["Oitavas 2", "03/12", "Sábado", "16:00"],
         ["Oitavas 3", "05/12", "Segunda", "12:00"],
         ["Oitavas 4", "05/12", "Segunda", "16:00"],
-        ["Oitavas 5", "04/12", "Domingo", "12:00"],
-        ["Oitavas 6", "04/12", "Domingo", "16:00"],
+        ["Oitavas 5", "04/12", "Domingo", "16:00"],
+        ["Oitavas 6", "04/12", "Domingo", "12:00"],
         ["Oitavas 7", "06/12", "Terça", "12:00"],
         ["Oitavas 8", "06/12", "Terça", "16:00"],
     ]
