@@ -62,6 +62,9 @@ header{
     margin: 6px auto;
 }
 
+
+
+/* Fase de Grupos */
 main#cards {
     display: flex;
     flex-wrap: wrap;
@@ -294,6 +297,7 @@ div.times div.equipe img{
 }
 
 
+
 /* Oitavas */
 div#oitavas{
     display: flex;
@@ -325,6 +329,7 @@ div#oitavas div.card h2 {
     margin-bottom: 32px;
 }
 
+/* Penaltis */
 div#oitavas div.placar p:first-child span,
 div#oitavas div.placar p:nth-child(3) span{
     position: absolute;
@@ -343,6 +348,37 @@ div#oitavas div.placar p:nth-child(3) span{
 }
 
 
+
+/* Oitavas */
+div#quartas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+div#quartas div.card{
+    width: 420px;
+
+    margin: 20px;
+}
+
+div#quartas div.card li{
+    display: flex;
+    
+    justify-content: space-around;
+    align-items: center;
+}
+
+div#quartas li div.bandeira{
+    display: flex;
+
+    justify-content: space-around;
+    align-items: center;
+}
+
+div#quartas div.card h2 {
+    margin-bottom: 32px;
+}
 
 /* Media querrys */
 @media (max-width: 650px) {

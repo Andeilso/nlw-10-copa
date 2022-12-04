@@ -417,6 +417,64 @@ const setandoArrayOitavas = (arrayOitavas) => {
     return arrayOitavas
 }
 
+const setandoArrayQuartas = (arrayQuartas) => {
+    //Criação de arrays
+    let classificados = [];
+
+    //Classifcados
+    for (const dataJogo in JogosPassados.oitavas) {
+        let i = 0;
+        
+        for (const jogo in JogosPassados.oitavas[dataJogo]) {
+            let jogoAtual = JogosPassados.oitavas[dataJogo][jogo];
+            let dadosJogo = Object.keys(JogosPassados.oitavas[dataJogo][jogo]);
+
+            if(jogoAtual[dadosJogo[0]] != "-"){
+                if (jogoAtual[dadosJogo[0]] > jogoAtual[dadosJogo[1]]){
+                    classificados.push(jogoAtual[dadosJogo[2]])
+    
+                } else if (jogoAtual[dadosJogo[0]] === jogoAtual[dadosJogo[1]] && jogoAtual[dadosJogo[0]] != "-"){
+    
+                    if(jogoAtual[dadosJogo[4]].j1 > jogoAtual[dadosJogo[4]].j2){
+                        classificados.push(jogoAtual[dadosJogo[2]])
+                        
+                    } else {
+                        classificados.push(jogoAtual[dadosJogo[3]])
+                        
+                    }
+                
+                } else {
+                    classificados.push(jogoAtual[dadosJogo[3]])
+    
+                }
+            }
+            i++
+        }
+    }
+
+    //Setando Jogos na arrayQuartas
+    for (let i = 0; i < 8; i++) {
+        if(classificados[i] === undefined ){
+            arrayQuartas.push([" ", " "]);
+
+        } else {
+            for (let j = 0; j < arrayDosTimes.length; j++) {
+    
+                for (let k = 0; k < arrayDosTimes[j].length; k++) {
+                    if(arrayDosTimes[j][k] != undefined){
+                        arrayDosTimes[j][k].pop();
+        
+                        if(classificados[i] === arrayDosTimes[j][k][1]){
+                            arrayQuartas.push([arrayDosTimes[j][k][0], arrayDosTimes[j][k][1]]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return arrayQuartas
+}
 
 
 //Criações
@@ -545,7 +603,7 @@ const criarTabelaDeGrupos = (main = mainHTML) => {
 
 //Criação de cards - Oitavas de Final
 const criarOitavasDeFinal = (array = arrayDosTimes, main = mainHTML) => {
-    let horários = [
+    let horarios = [
         ["Oitavas 1", "03/12", "Sábado", "12:00"],
         ["Oitavas 2", "03/12", "Sábado", "16:00"],
         ["Oitavas 3", "05/12", "Segunda", "12:00"],
@@ -560,11 +618,12 @@ const criarOitavasDeFinal = (array = arrayDosTimes, main = mainHTML) => {
     main.innerHTML = `<div id="oitavas"></div>`;
     let j = 0;
 
+    //Setando na tela e pulando conforme horários PAR
     for (let i = 0; i < arrayOitavas.length; i++) {
         if(i%2 === 0){
             main.children[0].innerHTML += `
                 <div class="card">
-                    <h2>${horários[j][1]} <span>${horários[j][2]}</span></h2>
+                    <h2>${horarios[j][1]} <span>${horarios[j][2]}</span></h2>
                     <li>
                         <div class="bandeira">
                             <img src="./assets/bandeiras/icon-${arrayOitavas[i][0][0]}.svg" alt="Bandeira do ${arrayOitavas[i][0][1]}">
@@ -572,7 +631,7 @@ const criarOitavasDeFinal = (array = arrayDosTimes, main = mainHTML) => {
                         </div>
 
                         <div class="horaPlacar">
-                            <strong class="hora">${horários[j][3]}</strong> 
+                            <strong class="hora">${horarios[j][3]}</strong> 
                         </div>
 
                         <div class="bandeira">
@@ -586,12 +645,12 @@ const criarOitavasDeFinal = (array = arrayDosTimes, main = mainHTML) => {
         }
     }
 
-    
+    //Setando na tela e pulando coforme os horários IMPAR
     for (let i = 0; i < arrayOitavas.length; i++) {
         if(i%2 === 1){
             main.children[0].innerHTML += `
                 <div class="card">
-                    <h2>${horários[j][1]} <span>${horários[j][2]}</span></h2>
+                    <h2>${horarios[j][1]} <span>${horarios[j][2]}</span></h2>
                     <li>
                         <div class="bandeira">
                             <img src="./assets/bandeiras/icon-${arrayOitavas[i][0][0]}.svg" alt="Bandeira do ${arrayOitavas[i][0][1]}">
@@ -599,7 +658,7 @@ const criarOitavasDeFinal = (array = arrayDosTimes, main = mainHTML) => {
                         </div>
 
                         <div class="horaPlacar">
-                            <strong class="hora">${horários[j][3]}</strong> 
+                            <strong class="hora">${horarios[j][3]}</strong> 
                         </div>
 
                         <div class="bandeira">
@@ -619,31 +678,159 @@ const criarOitavasDeFinal = (array = arrayDosTimes, main = mainHTML) => {
         bandeiras[i].addEventListener("mouseout", esconderNomeBandeiras);
     };
 
+    //Para cada data das oitavas dentro do Objeto JogosPassados.oitavas
     for (const dataJogos in JogosPassados.oitavas) {
+        let divCard = main.children[0].children;
         
-        
-        
+        //Se o dia atual for maior igual ou mês atual maior igual ao do jogo ou ano maior que do jogo atual
+        if(data.getDate() >= Number(dataJogos.split("_")[1])
+        || data.getMonth()+1 >= Number(dataJogos.split("_")[2])
+        || data.getFullYear() >= 2022){
+            
+            for (const jogo in JogosPassados.oitavas[dataJogos]) {
+                keysJogo = Object.keys(JogosPassados.oitavas[dataJogos][jogo]);
+                
+                for (let i = 0; i < divCard.length; i++) {
+                    let nomeTime = divCard[i].children[1].children[0].children[1].innerHTML;
+                    let divHoraPlacar = divCard[i].children[1].children[1];
+
+                    if(JogosPassados.oitavas[dataJogos][jogo][keysJogo[2]] === nomeTime
+                    && data.getHours() >= horarios[i][3].split(":")[0]
+                    && data.getDate() >= horarios[i][1].split("/")[0]
+                    || data.getFullYear() > 2022){
+
+                        if(JogosPassados.oitavas[dataJogos][jogo][keysJogo[0]] === JogosPassados.oitavas[dataJogos][jogo][keysJogo[1]]){
+                            divHoraPlacar.innerHTML = `
+                                <strong class="tituloPlacar">Placar</strong>
+                                <div class="placar">
+                                    <p>
+                                        ${JogosPassados.oitavas[dataJogos][jogo][keysJogo[0]]}
+                                        <span>${JogosPassados.oitavas[dataJogos][jogo][keysJogo[4]].j1}</span>
+                                    </p>
+                                    <p>x</p>
+                                    <p>
+                                        ${JogosPassados.oitavas[dataJogos][jogo][keysJogo[1]]}
+                                        <span>${JogosPassados.oitavas[dataJogos][jogo][keysJogo[4]].j2}</span>
+                                    </p>
+                                </div>
+                            `
+                        } else {
+
+                            divHoraPlacar.innerHTML = `
+                                <strong class="tituloPlacar">Placar</strong>
+                                <div class="placar">
+                                    <p>${JogosPassados.oitavas[dataJogos][jogo][keysJogo[0]]}</p>
+                                    <p>x</p>
+                                    <p>${JogosPassados.oitavas[dataJogos][jogo][keysJogo[1]]}</p>
+                                </div>
+                            `
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+    }
+}
+
+// Criação de cards - Quartas de Final
+const criarQuartasDeFinal = (main = mainHTML) => {
+    let horarios = [
+        ["Quartas 1", "09/12", "Sexta", "16:00"],
+        ["Quartas 3", "10/12", "Sábado", "16:00"],
+        ["Quartas 2", "09/12", "Sexta", "12:00"],
+        ["Quartas 4", "10/12", "Sábado", "12:00"]
+    ]
+    //Esvazia a tela
+    main.innerHTML = `<div id="quartas"></div>`;
+    let j = 0;
+    
+    // Setando na tela os Jogos
+    for (let i = 0; i < arrayQuartas.length; i++) {
+
+        if(arrayQuartas[i] != undefined && arrayQuartas[i+1] != undefined){
+
+            // Se estiver vazio adicione um escudo vazio
+            if(arrayQuartas[i][0] === " "){
+                main.children[0].innerHTML += `
+                <div class="card">
+                    <h2>${horarios[j][1]} <span>${horarios[j][2]}</span></h2>
+                    <li>
+                        <div class="bandeira">
+                            <img src="./assets/escudo-undefined.png" alt="Escudo cinza vazio">
+                            <p>Aguardando</p>
+                        </div>
+
+                        <div class="horaPlacar">
+                            <strong class="hora">${horarios[j][3]}</strong> 
+                        </div>
+
+                        <div class="bandeira">
+                            <img src="./assets/escudo-undefined.png" alt="Escudo cinza vazio">
+                            <p>Aguardando</p>
+                        </div>
+                    </li>
+                <div>
+                `
+            // Se não estiver traga os times
+            } else {
+                main.children[0].innerHTML += `
+                    <div class="card">
+                        <h2>${horarios[j][1]} <span>${horarios[j][2]}</span></h2>
+                        <li>
+                            <div class="bandeira">
+                                <img src="./assets/bandeiras/icon-${arrayQuartas[i][0]}.svg" alt="Bandeira do ${arrayQuartas[i][0]}">
+                                <p>${arrayQuartas[i][0]}</p>
+                            </div>
+    
+                            <div class="horaPlacar">
+                                <strong class="hora">${horarios[j][3]}</strong> 
+                            </div>
+    
+                            <div class="bandeira">
+                                <img src="./assets/bandeiras/icon-${arrayQuartas[i+1][0]}.svg" alt="Bandeira do ${arrayQuartas[i+1][1]}">
+                                <p>${arrayQuartas[i+1][1]}</p>
+                            </div>
+                        </li>
+                    <div>
+                `
+            }
+        }
+
+        j++
+        i++
+    }
+
+    // Efeito das bandeiras ao passar o mouse
+    for (let i = 0; i < bandeiras.length; i++) {
+        bandeiras[i].addEventListener("mouseover", ouvindoBandeiras);
+        bandeiras[i].addEventListener("mouseout", esconderNomeBandeiras);
+    };
+
+    // Setando na tela os resultados
+    for (const dataJogos in JogosPassados.quartas) {
         if (data.getDate() >= Number(dataJogos.split("_")[1])
         && (data.getMonth())+1 === Number(dataJogos.split("_")[2])
         || (data.getMonth())+1 > Number(dataJogos.split("_")[2])) {
             let i = 0;
-            
-            for (const jogo in JogosPassados.oitavas[dataJogos]) {
+            for (const jogo in JogosPassados.quartas[dataJogos]) {
                 let divPlacar = main.children[0].children[i].children[1].children[1];
                 let time = Object.keys(JogosPassados.oitavas[dataJogos][jogo]);
-                console.log(JogosPassados.oitavas[dataJogos][jogo][time[4]].j1);
-                if(JogosPassados.oitavas[dataJogos][jogo][time[0]] === JogosPassados.oitavas[dataJogos][jogo][time[1]]){
+
+                if(JogosPassados.quartas[dataJogos][jogo][time[0]] === JogosPassados.quartas[dataJogos][jogo][time[1]]){
                     divPlacar.innerHTML = `
                         <strong class="tituloPlacar">Placar</strong>
                         <div class="placar">
                             <p>
-                                ${JogosPassados.oitavas[dataJogos][jogo][time[0]]}
-                                <span>${JogosPassados.oitavas[dataJogos][jogo][time[4]].j1}</span>
+                                ${JogosPassados.quartas[dataJogos][jogo][time[0]]}
+                                <span>${JogosPassados.quartas[dataJogos][jogo][time[4]].j1}</span>
                             </p>
                             <p>x</p>
                             <p>
-                                ${JogosPassados.oitavas[dataJogos][jogo][time[1]]}
-                                <span>${JogosPassados.oitavas[dataJogos][jogo][time[4]].j2}</span>
+                                ${JogosPassados.quartas[dataJogos][jogo][time[1]]}
+                                <span>${JogosPassados.quartas[dataJogos][jogo][time[4]].j2}</span>
                             </p>
                         </div>
                     `
@@ -651,9 +838,9 @@ const criarOitavasDeFinal = (array = arrayDosTimes, main = mainHTML) => {
                     divPlacar.innerHTML = `
                         <strong class="tituloPlacar">Placar</strong>
                         <div class="placar">
-                            <p>${JogosPassados.oitavas[dataJogos][jogo][time[0]]}</p>
+                            <p>${JogosPassados.quartas[dataJogos][jogo][time[0]]}</p>
                             <p>x</p>
-                            <p>${JogosPassados.oitavas[dataJogos][jogo][time[1]]}</p>
+                            <p>${JogosPassados.quartas[dataJogos][jogo][time[1]]}</p>
                         </div>
                     `
                 }
@@ -672,7 +859,7 @@ function chamandoTela() {
 
 
 // Objetos
-// Objeto contendo os Jogos, as Datas, os horários, os grupos e os nomes dos times.
+// Objeto contendo os Jogos, as Datas, os horarios, os grupos e os nomes dos times.
 const Jogos = {
     data_20_11: {
         data: "20/11",
@@ -1335,7 +1522,7 @@ const Telas = {
     faseDeGrupos: criarFaseDeGrupos,
     tabela: criarTabelaDeGrupos,
     oitavasDeFinal: criarOitavasDeFinal,
-    // quartasDeFinal: ,
+    quartasDeFinal: criarQuartasDeFinal,
     // semifinal: ,
     // terceiroColocado: ,
     // Final: ,
@@ -1682,8 +1869,8 @@ const JogosPassados = {
         },
         dia_04_12:{
             jogo1:{
-                inglaterra: "-",
-                senegal: "-",
+                inglaterra: 2,
+                senegal: 0,
                 nome1: "Inglaterra",
                 nome2: "Senegal",
                 penaltis: {
@@ -1692,8 +1879,8 @@ const JogosPassados = {
                 }
             },
             jogo2:{
-                franca: "-",
-                polonia: "-",
+                franca: 3,
+                polonia: 1,
                 nome1: "França",
                 nome2: "Polônia",
                 penaltis: {
@@ -1746,6 +1933,20 @@ const JogosPassados = {
                 }
             },
         }
+    },
+    quartas: {
+        dia_09_12:{
+            jogo1:{
+            },
+            jogo2:{
+            },
+        },
+        dia_10_12:{
+            jogo1:{
+            },
+            jogo2:{
+            },
+        }
     }
 }
 
@@ -1761,11 +1962,14 @@ select.addEventListener('change' , chamandoTela);
 pontuar(arrayDosTimes);
 //Chama a funçao setandoArrayOitavas() para setar os pontos
 setandoArrayOitavas(arrayOitavas);
+//Chama a função setandoArrayQuartas() para setar os classificados para as quartas de final
+setandoArrayQuartas(arrayQuartas) 
+//Chama a função setandoArraySemifinais() para setar os classificados para as Semifinais
 
 
 
 // Iniciar a tela com Fase de Grupo
-Telas.oitavasDeFinal();
+Telas.quartasDeFinal();
 
 
 
