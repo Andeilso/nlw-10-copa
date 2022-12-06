@@ -1894,60 +1894,24 @@ const JogosPassados = {
         },
         dia_05_12:{
             jogo1:{
-                japao: "-",
-                croacia: "-",
+                japao: 1,
+                croacia: 1,
                 nome1: "Japão",
                 nome2: "Croácia",
                 penaltis: {
-                    j1: "-",
-                    j2: "-"
+                    j1: 1,
+                    j2: 3
                 }
             },
             jogo2:{
-                brasil: "-",
-                coreiaDoSul: "-",
+                brasil: 4,
+                coreiaDoSul: 1,
                 nome1: "Brasil",
                 nome2: "Coréia do Sul",
                 penaltis: {
                     j1: "-",
                     j2: "-"
                 }
-            },
-        },
-        dia_06_12:{
-            jogo1:{
-                marrocos: "-",
-                espanha: "-",
-                nome1: "Marrocos",
-                nome2: "Espanha",
-                penaltis: {
-                    j1: "-",
-                    j2: "-"
-                }
-            },
-            jogo2:{
-                portugal: "-",
-                suica: "-",
-                nome1: "Portugal",
-                nome2: "Suiça",
-                penaltis: {
-                    j1: "-",
-                    j2: "-"
-                }
-            },
-        }
-    },
-    quartas: {
-        dia_09_12:{
-            jogo1:{
-            },
-            jogo2:{
-            },
-        },
-        dia_10_12:{
-            jogo1:{
-            },
-            jogo2:{
             },
         }
     }
