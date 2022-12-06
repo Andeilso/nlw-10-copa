@@ -417,68 +417,6 @@ const setandoArrayOitavas = (arrayOitavas) => {
     return arrayOitavas
 }
 
-const setandoArrayQuartas = (arrayQuartas) => {
-    //Criação de arrays
-    let classificados = [];
-
-    //Classifcados
-    for (const dataJogo in JogosPassados.oitavas) {
-        let i = 0;
-        
-        for (const jogo in JogosPassados.oitavas[dataJogo]) {
-            let jogoAtual = JogosPassados.oitavas[dataJogo][jogo];
-            let dadosJogo = Object.keys(JogosPassados.oitavas[dataJogo][jogo]);
-
-            if(jogoAtual[dadosJogo[0]] != "-"){
-                if (jogoAtual[dadosJogo[0]] > jogoAtual[dadosJogo[1]]){
-                    classificados.push(jogoAtual[dadosJogo[2]])
-    
-                } else if (jogoAtual[dadosJogo[0]] === jogoAtual[dadosJogo[1]] && jogoAtual[dadosJogo[0]] != "-"){
-    
-                    if(jogoAtual[dadosJogo[4]].j1 > jogoAtual[dadosJogo[4]].j2){
-                        classificados.push(jogoAtual[dadosJogo[2]])
-                        
-                    } else {
-                        classificados.push(jogoAtual[dadosJogo[3]])
-                        
-                    }
-                
-                } else if (jogoAtual[dadosJogo[0]] < jogoAtual[dadosJogo[1]]){
-                    classificados.push(jogoAtual[dadosJogo[3]])
-    
-                }
-            } else if (jogoAtual[dadosJogo[0]] === "-"){
-                classificados.push(undefined);
-            }
-            i++
-        }
-    }
-    console.log(classificados);
-
-    //Setando Jogos na arrayQuartas
-    for (let i = 0; i < 8; i++) {
-        if(classificados[i] === undefined ){
-            arrayQuartas.push([" ", " "]);
-
-        } else {
-            for (let j = 0; j < arrayDosTimes.length; j++) {
-    
-                for (let k = 0; k < arrayDosTimes[j].length; k++) {
-                    if(arrayDosTimes[j][k] != undefined){
-                        arrayDosTimes[j][k].pop();
-        
-                        if(classificados[i] === arrayDosTimes[j][k][1]){
-                            arrayQuartas.push([arrayDosTimes[j][k][0], arrayDosTimes[j][k][1]]);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    return arrayQuartas
-}
-
 
 //Criações
 // Criação de Cards - Fase de Grupos
@@ -1525,7 +1463,7 @@ const Telas = {
     faseDeGrupos: criarFaseDeGrupos,
     tabela: criarTabelaDeGrupos,
     oitavasDeFinal: criarOitavasDeFinal,
-    quartasDeFinal: criarQuartasDeFinal,
+    // quartasDeFinal: criarQuartasDeFinal,
     // semifinal: ,
     // terceiroColocado: ,
     // Final: ,
@@ -1913,6 +1851,42 @@ const JogosPassados = {
                     j2: "-"
                 }
             },
+        },
+        dia_06_12:{
+            jogo1:{
+                marrocos: 0,
+                espanha: 0,
+                nome1: "Marrocos",
+                nome2: "Espanha",
+                penaltis: {
+                    j1: 3,
+                    j2: 0
+                }
+            },
+            jogo2:{
+                portugal: 2,
+                suica: 0,
+                nome1: "Portugal",
+                nome2: "Suiça",
+                penaltis: {
+                    j1: "-",
+                    j2: "-"
+                }
+            },
+        }
+    },
+    quartas: {
+        dia_09_12:{
+            jogo1:{
+            },
+            jogo2:{
+            },
+        },
+        dia_10_12:{
+            jogo1:{
+            },
+            jogo2:{
+            },
         }
     }
 }
@@ -1930,7 +1904,7 @@ pontuar(arrayDosTimes);
 //Chama a funçao setandoArrayOitavas() para setar os pontos
 setandoArrayOitavas(arrayOitavas);
 //Chama a função setandoArrayQuartas() para setar os classificados para as quartas de final
-setandoArrayQuartas(arrayQuartas) 
+// setandoArrayQuartas(arrayQuartas) 
 //Chama a função setandoArraySemifinais() para setar os classificados para as Semifinais
 
 
