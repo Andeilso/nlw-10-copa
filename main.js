@@ -413,6 +413,7 @@ const tratandoArrayDosTimes = (lista, listaKey) => {
 }
 
 //Funçoes mortas por conta do site travando -------------
+
 const pontuar = () => {
     
     //Para cada Dia de Jogo dentro do Objeto JogosPassados faça:
@@ -451,6 +452,8 @@ const setandoArrayOitavas = () => {
 
     return arrayOitavas
 }
+
+//-------------------------------------------------------
 
 const setandoArrayQuartas = () => {
     //Criação de arrays
@@ -502,7 +505,7 @@ const setandoArrayQuartas = () => {
 
     return arrayQuartas;
 }
-//------------------------------------------------------
+
 
 
 //Criações
@@ -2062,23 +2065,23 @@ const JogosPassados = {
     quartas: {
         dia_09_12:{
             jogo1:{
-                croacia: "-",
-                brasil: "-",
+                croacia: 1,
+                brasil: 1,
                 nome1: "Croácia",
                 nome2: "Brasil",
                 penaltis: {
-                    j1: "-",
-                    j2: "-"
+                    j1: 4,
+                    j2: 2
                 }
             },
             jogo2:{
-                holanda: "-",
-                argentina: "-",
+                holanda: 2,
+                argentina: 2,
                 nome1: "Holanda",
                 nome2: "Argentina",
                 penaltis: {
-                    j1: "-",
-                    j2: "-"
+                    j1: 3,
+                    j2: 4
                 }
             },
         },
