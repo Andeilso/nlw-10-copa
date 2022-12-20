@@ -1357,7 +1357,7 @@ const criarFinal = (main = mainHTML) => {
 
     main.children[0].innerHTML += `
         <div class="card ganhador">
-            <h2>Terceiro Colocado</h2>
+            <h2>Campeão</h2>
             <li>
                 <div class="bandeira">
                     <img src="./assets/bandeiras/icon-${arrayFinal[0][0]}.svg" alt="Bandeira do ${arrayFinal[0][1]}">
@@ -2570,7 +2570,3 @@ setandoFinal();
 
 // Iniciar a tela com Fase de Grupo
 Telas.final();
-
-
-
-
