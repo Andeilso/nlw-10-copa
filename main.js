@@ -122,10 +122,16 @@ let arraySemifinais = [
 ];
 
 //Array da disputa pelo terceiro lugar
-let arrayTerceiroLugar = [];
+let arrayTerceiroLugar = [
+    ['croacia', 'Croácia'],
+    ['marrocos', 'Marrocos']
+];
 
 //Array da Final
-let arrayFinal = [];
+let arrayFinal = [
+    ['argentina', 'Argentina'],
+    ['franca', 'França']
+];
 
 
 
@@ -578,10 +584,6 @@ const setandoArraySemifinais = () => {
     return arraySemifinais;
 }
 
-//---------------------------------------------------------------
-
-
-
 const setandoTerceiroLugar = () => {
     //Criação de arrays
     let classificados = [];
@@ -679,6 +681,8 @@ const setandoFinal = () => {
     return arrayFinal;
 }
 
+//---------------------------------------------------------------
+
 
 
 //Criações
@@ -744,8 +748,9 @@ const criarFaseDeGrupos = (cont, main = mainHTML) => {
 }
 
 // Criação de Cards - Tabela de Pontos Fase de grupo
-const criarTabelaDeGrupos = (main = mainHTML) => {
+const criarTabelaDeGrupos = (main = mainHTML, array = arrayDosTimes) => {
     main.innerHTML = "";
+
     for (let i = 0; i < arrayDosTimes.length; i++) {
 
         // Adicionando uma Card para cada grupo dentro do objeto Grupos
@@ -781,7 +786,7 @@ const criarTabelaDeGrupos = (main = mainHTML) => {
     
         for (let j = 0; j < arrayDosTimes[i].length; j++) {
             let timeSelecionado = arrayDosTimes[i][j];
-
+            console.log(timeSelecionado);
             //Para não Pegar o Grupo dentro do array
             if(j !== 4){
 
@@ -2562,11 +2567,5 @@ select.addEventListener('change' , chamandoTela);
 
 
 
-//Setando arraySemifinais
-setandoTerceiroLugar();
-setandoFinal();
-
-
-
 // Iniciar a tela com Fase de Grupo
-Telas.final();
+Telas.tabela();
