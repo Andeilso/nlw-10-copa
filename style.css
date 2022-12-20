@@ -349,12 +349,18 @@ div#oitavas div.placar p:nth-child(3) span{
 
 
 /* Quartas */
-div#quartas div.card{
+div#quartas div.card,
+div#semifinais div.card,
+div#terceiroLugar div.card,
+div#final div.card{
     width: 420px;
     margin: 20px;
 }
 
-div#quartas div.card li{
+div#quartas div.card li,
+div#semifinais div.card li,
+div#terceiroLugar div.card li,
+div#final div.card li{
     display: flex;
     
     justify-content: space-around;
@@ -367,7 +373,9 @@ div#quartas div.card h2 {
 
 /* Penaltis */
 div#quartas div.placar p:first-child span,
-div#quartas div.placar p:nth-child(3) span{
+div#quartas div.placar p:nth-child(3) span,
+div#final div.placar p:first-child span,
+div#final div.placar p:nth-child(3) span{
     position: absolute;
     bottom: -10px;
     left: 20px;
@@ -378,12 +386,46 @@ div#quartas div.placar p:nth-child(3) span{
     border-radius: 10px;
 }
 
-div#quartas div.placar p:nth-child(3) span{
+div#quartas div.placar p:nth-child(3) span,
+div#final div.placar p:nth-child(3) span{
     left: unset;
     right: 20px;
 }
 
+/* Ganhador */
+div#terceiroLugar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+div#terceiroLugar div.card,
+div#final div.card{
+    margin-top: 70px;
+}
+
+div div.ganhador{
+    width: 550px;
+    height: 250px;
+}
+
+div.ganhador .bandeira{
+    scale: 2.0;
+}
+
+div.ganhador .medalha{
+    position: absolute;
+    right: -5px;
+    bottom: -5px;
+
+    width: 25px;
+    padding: 2px;
+
+    border-radius: 20px;
+    border: 1px solid #1D1C19;
+
+    background-color: #F7DD43;
+}
 
 /* Media querrys */
 @media (max-width: 650px) {
