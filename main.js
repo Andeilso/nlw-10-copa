@@ -2568,4 +2568,4 @@ select.addEventListener('change' , chamandoTela);
 
 
 // Iniciar a tela com Fase de Grupo
-Telas.tabela();
+Telas.final();
